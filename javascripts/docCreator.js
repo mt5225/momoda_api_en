@@ -86,13 +86,12 @@ DocCreator.prototype.clickInheritItem = function( inheritItem, itemName ) {
 	html += '<br>' 		
 	html += '<div class="detailedcont">' 
 	if(curItem["parameterInherit"]){
-				html += '<p><b>参数：  </b></p>&nbsp;&nbsp;&nbsp;&nbsp;' 
-//				html += '<a href="#" class="leaves" onclick=docCreator.clickInheritItem("' + curItem["parameterInherit"] +'","'+ itemName + '");>继承' + curItem["parameterInherit"] + '</a>'
-				html += '<a href="#" class="leaves" onclick=docCreator.clickInheritItem("' + curItem["parameterInherit"] +'","'+ itemName + '");>支持标准的物体输入参数</a>'
+				html += '<p><b>Parameters  </b></p>&nbsp;&nbsp;&nbsp;&nbsp;' 
+				html += '<a href="#" class="leaves" onclick=docCreator.clickInheritItem("' + curItem["parameterInherit"] +'","'+ itemName + '");>Object Reference</a>'
 				
 	}
 	else{
-				html += '<p><b>参数：  </b></p>' 
+				html += '<p><b>Parameters  </b></p>' 
 				
 	}
 
@@ -136,38 +135,38 @@ DocCreator.prototype.clickDocItem = function(  itemName ) {
 	curItem["cmdDes"] = this.normaliseStr( curItem["cmdDes"], true ); 
 	
 	var html = '<section>';
-	html += '<h2><b>命令：</b>'+ curItem["cmd"] +'</h2>' +
+	html += '<h2><b>Command: </b>'+ curItem["cmd"] +'</h2>' +
 			'<p class="cmdexplain">&nbsp;&nbsp;&nbsp;&nbsp;' + curItem["cmdDes"] + '</p>' 
 			
 	html += '<br>' 		
 	html += '<div class="detailedcont">' 
 	if(curItem["parameterInherit"]){
-				html += '<p><b>参数：  </b></p>&nbsp;&nbsp;&nbsp;&nbsp;' 
+				html += '<p><b>Parameters:  </b></p>&nbsp;&nbsp;&nbsp;&nbsp;' 
 //				html += '<a href="#" class="leaves" onclick=docCreator.clickInheritItem("' + curItem["parameterInherit"] +'","'+ itemName + '")>继承' + curItem["parameterInherit"] + '</a>'
-				html += '<a href="#" class="leaves" onclick=docCreator.clickInheritItem("' + curItem["parameterInherit"] +'","'+ itemName + '");>支持标准的物体输入参数</a>'				
+				html += '<a href="#" class="leaves" onclick=docCreator.clickInheritItem("' + curItem["parameterInherit"] +'","'+ itemName + '");>Object Reference</a>'				
 	}
 	else{
-				html += '<p><b>参数：  </b></p>' 
+				html += '<p><b>Parameters  </b></p>' 
 				
 	}
 
 	if(!curItem["parameters"] || curItem["parameters"].length == 0 ){
 		if(!curItem["parameterInherit"]){
-			html += '<p>&nbsp;&nbsp;&nbsp;&nbsp无需其他参数  </p>';
+			html += '<p>&nbsp;&nbsp;&nbsp;&nbsp No parameters  </p>';
 		}
 	}
 	else{
 		for(var i = 0 ; i < curItem["parameters"].length ; i++){
 			html += '<p class="cont">';
 			var curParam = curItem["parameters"][i]
-			var requred = "否"
-			if( curParam["requred"]) requred = "是"
+			var requred = "No"
+			if( curParam["requred"]) requred = "Yes"
 			
 			html +=	'<b>'+ curParam["parameter"] +'</b>' +
-					'<span>必填：'+ requred +'</span></span>'
+					'<span>Required: '+ requred +'</span></span>'
 			
 			if(curParam["default"]){
-				html += '<span>默认：'+ mmd.jsonTools.toJSON(curParam["default"]) +'</span>'
+				html += '<span>Default: '+ mmd.jsonTools.toJSON(curParam["default"]) +'</span>'
 			}
 			html += '</p>';	
 			
@@ -180,7 +179,7 @@ DocCreator.prototype.clickDocItem = function(  itemName ) {
 	
 	html += '<br>' 
 	if( curItem["examples"] && curItem["examples"].length > 0 ){		
-		html += '<p><b>示例：</b></p>'; 
+		html += '<p><b>Example: </b></p>'; 
 		html += '<pre>'; 
 		for(var i = 0 ; i < curItem["examples"].length ; i++){
 			var curExample = curItem["examples"][i]; 

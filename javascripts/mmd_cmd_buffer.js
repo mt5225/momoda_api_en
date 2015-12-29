@@ -1,15 +1,15 @@
 var cmds = [
 	{
 		"cmd":"CopyBuffer",
-		"cmdDes":"将一个buffer的内容拷贝到另一个目标buffer中，目标buffer里原先的内容将被删除。<br>	" +
-				"注：这个命令只用于buffer中装的是物体对象的情况",
+		"cmdDes":"Copy content of source buffer to target buffer, content in target buffer will be overwrote.<br>	" +
+				"Note: this command only apply to object buffers",
 		"parameters":[
-			{ "parameter":"fromBuffer", "des":"要拷贝的原buffer路径", "requred":true, "default":""},
-			{ "parameter":"toBuffer", "des":"要拷贝到的目标buffer路径", "requred":true, "default":""}
+			{ "parameter":"fromBuffer", "des":"source buffer path", "required":true, "default":""},
+			{ "parameter":"toBuffer", "des":"target buffer path", "required":true, "default":""}
 		],
 		"examples":[
 			{
-				"name":"完全添加buffer路径",
+				"name":"buffer with full path",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "CopyBuffer", <br>' +
@@ -18,12 +18,12 @@ var cmds = [
 						'}'	
 			},
 			{
-				"name":"也可以直接简写buffer路径",
+				"name":"buffer with relative path",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "CopyBuffer", <br>' +
-						'	"fromBuffer":"buffer1", //等同于{"ObjectManager":"RunBuffer/buffer1"}<br>' +
-						'	"toBuffer":"buffer2"} //等同于{"ObjectManager":"RunBuffer/buffer2"}<br>' +
+						'	"fromBuffer":"buffer1", //same as  {"ObjectManager":"RunBuffer/buffer1"}<br>' +
+						'	"toBuffer":"buffer2"} //same as {"ObjectManager":"RunBuffer/buffer2"}<br>' +
 						'}'	
 			}			
 			
@@ -31,11 +31,11 @@ var cmds = [
 	},
 	{
 		"cmd":"MergeBuffer",
-		"cmdDes":"将一个buffer的内容拷贝到另一个目标buffer中，目标buffer里原先的内容将被保留。<br>	" +
-				"注：这个命令只用于buffer中装的是物体对象的情况",
+		"cmdDes":"Copy content of source buffer to target buffer, content in target buffer will be reserved.<br>	" +
+				"Note: this command only apply to object buffers",
 		"parameters":[
-			{ "parameter":"fromBuffer", "des":"要拷贝的原buffer路径", "requred":true, "default":""},
-			{ "parameter":"toBuffer", "des":"要拷贝到的目标buffer路径", "requred":true, "default":""}
+			{ "parameter":"fromBuffer", "des":"source buffer path", "required":true, "default":""},
+			{ "parameter":"toBuffer", "des":"target buffer path", "required":true, "default":""}
 		],
 		"examples":[
 			{
@@ -51,11 +51,11 @@ var cmds = [
 	},	
 	{
 		"cmd":"SubtractBuffer",
-		"cmdDes":"如果目标buffer中存在原buffer相同的对象，将被删除。<br>	" +
-				"注：这个命令只用于buffer中装的是物体对象的情况",
+		"cmdDes":"Delete objects in target buffer which are identical to objects in source buffer<br>	" +
+				"Note: this command only apply to object buffers",
 		"parameters":[
-			{ "parameter":"fromBuffer", "des":"原buffer路径", "requred":true, "default":""},
-			{ "parameter":"toBuffer", "des":"目标buffer路径", "requred":true, "default":""}
+			{ "parameter":"fromBuffer", "des":"source buffer path", "required":true, "default":""},
+			{ "parameter":"toBuffer", "des":"target buffer path", "required":true, "default":""}
 		],
 		"examples":[
 			{
@@ -71,14 +71,14 @@ var cmds = [
 	},	
 	{
 		"cmd":"SetObjectsToBuffer",
-		"cmdDes":"将输入的对象到指定的buffer中",
+		"cmdDes":"assign object to buffer",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[			
-			{ "parameter":"toBuffer", "des":"指定存放的buffer路径", "requred":true, "default":""}
+			{ "parameter":"toBuffer", "des":"buffer path", "requred":true, "default":""}
 		],
 		"examples":[
 			{
-				"name":"可以使用uid，指定一个物体存放到buffer中",
+				"name":"refer object by uid",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SetObjectsToBuffer", <br>' +
@@ -87,7 +87,7 @@ var cmds = [
 						'}'	
 			},
 			{
-				"name":"可以同时传入多个uid",
+				"name":"object uid list",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SetObjectsToBuffer", <br>' +
@@ -96,7 +96,7 @@ var cmds = [
 						'}'	
 			},	
 			{
-				"name":"也可以使用id",
+				"name":"refer object by id",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SetObjectsToBuffer", <br>' +
@@ -108,14 +108,14 @@ var cmds = [
 	},
 	{
 		"cmd":"SetBufferValue",
-		"cmdDes":"给buffer设置值", 
+		"cmdDes":"assign value to buffer", 
 		"parameters":[
-			{ "parameter":"toBuffer", "des":"要设置的buffer", "requred":true, "default":""},
-			{ "parameter":"value", "des":"要设置的值", "requred":true, "default":""}
+			{ "parameter":"toBuffer", "des":"buffer path", "required":true, "default":""},
+			{ "parameter":"value", "des":"value", "required":true, "default":""}
 		],
 		"examples":[
 			{
-				"name":"传入一个空字符，清空一个buffer",
+				"name":"empty buffer",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SetBufferValue", <br>' +
@@ -127,5 +127,5 @@ var cmds = [
 	}	
 ]
 
-docCreator.addDocItemFromData("缓冲", cmds)
+docCreator.addDocItemFromData("Buffer", cmds)
 
