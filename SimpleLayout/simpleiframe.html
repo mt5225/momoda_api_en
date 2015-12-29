@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html style="border-width: 0px;">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<link rel="stylesheet" type="text/css" href="jscolors.css">
+<link rel="stylesheet" type="text/css" href="../css/base.css">
+<link rel="stylesheet" type="text/css" href="../css/jsonresult.css">
+<style>
+.js-string{
+white-space: normal;
+}
+</style>
+</head>
+<body contenteditable="true"
+	style="border-width: px; white-space: nowrap;" class="editbox"
+	spellcheck="false">
+	<div class="linebreak">
+		<span class="js-comment">// Please Select Some Action.</span>
+	</div>
+	<div style="display:none">
+		<div class='linebreak'>
+			<span class='js-variable'>var </span><span class='js-variabledef'>url</span><span
+				class='js-operator'> = </span><span class='js-punctuation'>"http://api.3dmomoda.com/put/data"</span>
+		</div>
+		<div class='linebreak'>
+			<span class='js-variable'>function </span>
+			<span class='js-variabledef'>post</span>
+			<span class='js-punctuation'>(</span>
+			<span class='js-string'>url</span>
+			<span class='js-punctuation'>,</span>
+			<span class='js-string'>parameter</span>
+			<span class='js-punctuation'>,</span>
+			<span class='js-string'>callback</span>
+			<span class='js-punctuation'>)</span>
+			<span class='js-punctuation'>{</span>
+		</div>
+		
+		<div class='linebreak'>
+			<span class='whitespace'>&nbsp;&nbsp;</span>
+			<span class='js-variable'>$.</span>
+			<span class='js-variabledef'>ajax</span>
+			<span class='js-punctuation'>({</span>
+		</div>
+		<div class='linebreak'>
+			<span class='whitespace'>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class='js-keyword'>type</span>
+			<span class='js-variabledef'> : </span>
+			<span class='js-string'>POST</span>
+			<span class='js-punctuation'>,</span>
+		</div>
+		<div class='linebreak'>
+			<span class='whitespace'>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class='js-keyword'>url</span>
+			<span class='js-variabledef'> : </span>
+			<span class='js-string'>url</span>
+			<span class='js-punctuation'>,</span>
+		</div>
+		<div class='linebreak'>
+			<span class='whitespace'>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class='js-keyword'>data</span>
+			<span class='js-variabledef'> : </span>
+			<span class='js-variable'>$.</span>
+			<span class='js-string'>toJSON</span>
+			<span class='js-punctuation'>(</span>
+			<span class='js-string'>param</span>
+			<span class='js-punctuation'>)</span>
+			<span class='js-punctuation'>,</span>
+		</div>
+		<div class='linebreak'>
+			<span class='whitespace'>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class='js-keyword'>dataType</span>
+			<span class='js-variabledef'> : </span>
+			<span class='js-string'>json</span>
+			<span class='js-punctuation'>,</span>
+		</div>
+		<div class='linebreak'>
+			<span class='whitespace'>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class='js-keyword'>processData</span>
+			<span class='js-variabledef'> : </span>
+			<span class='js-string'>false</span>
+			<span class='js-punctuation'>,</span>
+		</div>
+		<div class='linebreak'>
+			<span class='whitespace'>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class='js-keyword'>contentType</span>
+			<span class='js-variabledef'> : </span>
+			<span class='js-string'>application/json</span>
+			<span class='js-punctuation'>,</span>
+		</div>
+		<div class='linebreak'>
+			<span class='whitespace'>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class='js-keyword'>success</span>
+			<span class='js-variabledef'> : </span>
+			<span class='js-string'>callback</span>
+			<span class='js-punctuation'>,</span>
+		</div>
+		<div class='linebreak'>
+			<span class='whitespace'>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class='js-keyword'>timeout</span>
+			<span class='js-variabledef'> : </span>
+			<span class='js-atom'>6000</span>
+		</div>
+		<div class='linebreak'>
+			<span class='whitespace'>&nbsp;&nbsp;</span>
+			<span class='js-punctuation'>});</span>
+		</div>
+		<div class='linebreak'>
+			<span class='whitespace'>&nbsp;&nbsp;</span>
+			<span class='js-punctuation'>};</span>
+		</div>
+		
+	</div>
+</body>
+</html>

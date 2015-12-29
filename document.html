@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0046)http://layout.jquery-dev.com/demos/simple.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" />
+<head>
+
+<title>模模搭 | INTERACTIVE</title>
+
+<meta charset="utf-8" />
+
+<!-- CSS Global Compulsory-->
+<link type="text/css" rel="stylesheet"
+	href="SimpleLayout/layout-default-latest.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<!-- CSS Implementing Plugins -->
+<link rel="stylesheet" href="css/font-awesome.css" />
+<link rel="stylesheet" href="prettify/prettify.css" />
+<link href="css/base.css" rel="stylesheet" />
+<link href="css/jsonresult.css" rel="stylesheet" />
+
+<!-- CSS Theme -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+
+.CodeMirror-line-numbers {
+	width: 2.2em;
+	color: #aaa;
+	text-align: right;
+	padding-right: .3em;
+	padding-top: 5px;
+	font-size: 10pt;
+	font-family: monospace;
+	background-color: #eee;
+}
+
+#CodeMirrorDiv {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	float: left;
+}
+
+a.leaves {
+	color: #27537a;
+}
+
+.leaves a { /* color: blue; */
+	text-decoration: none;
+}
+
+.action_header {
+	font-weight: bold;
+}
+
+.hitarea {
+	background: url(../img/minus.gif) no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-left: -16px;
+	float: left;
+	cursor: pointer;
+}
+
+li {
+	display: list-item;
+	text-align: -webkit-match-parent;
+}
+
+a.selected_leaf,a.selected_leaf:hover {
+	color: #FFF;
+	background-color: #27537a;
+}
+</style>
+
+</head>
+<body>
+
+	<!-- allowOverflow auto-attached by option: west__showOverflowOnHover = true -->
+	<div class="ui-layout-west ui-layout-pane ui-layout-pane-west"
+		style="OVERFLOW: auto; position: absolute; right: 256px; top: 90px; bottom: 43px; height: 755px; ">
+		<li class="closed collapsable" classname="closed">
+			<span class="action_header" classname="action_header">
+				Navigation Modes
+			</span>
+			<ul style="display: block;">
+				<li class="leaves">
+					<a href="#" class="leaves" onclick="selectSomeOne(this);">
+						Toggle Disabled mode
+					</a>
+				</li>
+			</ul>
+		</li>
+	</div>
+
+
+	<div class="ui-layout-center ui-layout-pane ui-layout-pane-center"
+		style="position: absolute; margin: 0px; left: 211px; right: 580px; top: 60px; bottom: 36px; height: 100%; width: 700px; z-index: 1; visibility: visible; display: block;">
+		<div id="CodeMirrorDiv" style="height: 95%;">
+			<div class="CodeMirror-wrapping"
+				style="OVERFLOW: auto;position: relative; height: 100%; margin-left: 33px;" id="codeactivor">
+				
+			</div>
+		</div>
+		<!--<div style="margin-left: 80px;">-->
+			<!--<button onclick="excuteCode(1);">执行代码</button>-->
+			<!--<button onclick="excuteCode(0);">重置场景</button>-->
+			<!--button onclick="showMsg();">模型信息</button>  -->
+		<!--</div>-->
+	</div>
+
+
+	<!-- LAYOUT v 1.3.0 -->
+	<script type="text/javascript" src="SimpleLayout/jquery-latest.js"></script>
+	<script type="text/javascript" src="SimpleLayout/jquery-ui-latest.js"></script>
+	<script type="text/javascript"
+		src="SimpleLayout/jquery.layout-1.3.0.rc30.80.js"></script>
+	<script type="text/javascript" src="bootstrap.min.js"></script>
+	<script type="text/javascript" src="prettify/prettify.js"></script>
+	<script type="text/javascript" src="javascripts/common.js"></script>
+	<script type="text/javascript" src="javascripts/docCreator.js"></script>
+	
+	<script type="text/javascript" src="javascripts/mmd_cmd_buffer.js"></script>
+	<script type="text/javascript" src="javascripts/mmd_cmd_object.js"></script>	
+	<script type="text/javascript" src="javascripts/mmd_cmd_selection.js"></script>
+	<script type="text/javascript" src="javascripts/mmd_cmd_resource.js"></script>	
+	<script type="text/javascript" src="javascripts/mmd_cmd_effect.js"></script>
+	<script type="text/javascript" src="javascripts/mmd_cmd_animation.js"></script>
+	<script type="text/javascript" src="javascripts/mmd_cmd_UI.js"></script>
+	<script type="text/javascript" src="javascripts/mmd_cmd_camera.js"></script>	
+	<script type="text/javascript" src="javascripts/mmd_cmd_commonObjectInterface.js"></script>		
+	<script type="text/javascript" src="javascripts/mmd_cmd_deploy.js"></script>	
+	<script type="text/javascript" src="javascripts/mmd_cmd_event.js"></script>	
+	<script type="text/javascript" src="javascripts/mmd_cmd_monitor.js"></script>	
+	<script type="text/javascript" src="javascripts/mmd_cmd_snapshot.js"></script>
+	<script type="text/javascript" src="javascripts/mmd_cmd_html.js"></script>	
+	<script type="text/javascript" src="javascripts/mmd_cmd_logic.js"></script>	
+	<script type="text/javascript" src="javascripts/mmd_cmd_cmdPanel.js"></script>	
+	
+	<script type="text/javascript">
+		var myLayout;
+		$(document).ready(function() {
+			myLayout = $('body').layout({
+				//	reference only - these options are NOT required because 'true' is the default
+				closable : true, // pane can open & close
+				resizable : true, // when open, pane can be resized 
+				slidable : false, // when closed, pane can 'slide' open over other panes - closes on mouse-out
+				livePaneResizing : false, //	some resizing/toggling settings
+				
+				north__resizable : false,
+				north__closable : false,
+				east__size : .7,
+				east__minSize : 600,
+				east__resizable : false,
+				east__maxSize : .8, // 80% of layout width
+			    east__spacing_open: 11,
+                east__spacing_closed: 11,
+				south__resizable : false,
+				west__size : 300,
+				west__spacing_open : 11,
+				west__spacing_closed : 11
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		$iframe = $("#codeactivor");
+		var _parent = "";
+		var _action = "";
+		$(document).ready(	
+			function() {
+				docCreator.docDiv = $iframe;
+				$(".ui-layout-west").html(docCreator.getMenuHtml());
+				
+				/*var str = "";
+				for ( var i = 1; i < 100; i++) {
+					str += "<div>" + i + "</div>";
+				}
+				$(".CodeMirror-line-numbers").html(str);
+				function hasNext(object) {
+					for ( var key in object) {
+						return true;
+					}
+					return false;
+				}*/
+			}
+		);	
+
+		var handleList = function(object) {
+			var code = "";
+			if (typeof(object) == "number") {
+				code += "<span class='js-atom'>" + object + "</span><span class='js-punctuation'>,</span>";
+			} else{
+				code += "<span class='js-string'>" + object
+						+ "</span><span class='js-punctuation'>,</span>";
+			}
+			return code;
+		};
+
+		function excuteCode(operation) {
+			if(operation == 0){
+				return document.getElementById('threediframe').contentWindow.uModel.RunCommand(JSON.stringify({"cmd":"ResetDebugScene"}));
+			}
+			var cmdStr = $iframe.find("body").text();
+			var headline = $iframe.find(".linebreak:first").text();
+			cmdStr = cmdStr.replace(headline,"");
+			var cmd = [];
+			try{
+				cmd = eval(cmdStr);
+			}catch(e){
+				cmd = eval("[" + cmdStr +"]");
+			}
+			document.getElementById('threediframe').contentWindow.uModel.RunCommand(JSON.stringify(cmd));
+		};
+		
+		function showText(text) {
+			alert(text)
+		};				
+		function showImage(url) {
+			alert(url)
+		};		
+		
+	</script>
+</body>
+
+</html>

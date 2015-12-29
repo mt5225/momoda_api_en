@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* 放网站基础的样式 */
+
+body {
+    margin: 0;
+    font-family: 'Microsoft YaHei';
+}
+
+ul {
+    padding: 0;
+    margin: 0 0 0 10px;
+}
+
+li {
+    list-style: none;
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight: normal;
+}
+h1{
+	font-size:24px;
+	padding:15px 0 0;
+	margin:15px 0;
+}
+h2{
+	font-size:18px;
+	margin:20px 0 10px;
+}
+h3{
+	font-size:16px;
+}
+p{
+	font-size:14px;
+    padding:0;
+    margin:0;
+}
+a {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover{
+	text-decoration: underline;
+}
+
+.clear:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.clear {
+    zoom: 1;
+}
+
+.left {
+    display: inline;
+    float: left;
+}
+
+.right {
+    display: inline;
+    float: right;
+}
+
+.arayrignt::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-bottom: none;
+    transform: rotate(45deg);
+    display: block;
+    float: right;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -7px;
+}
+
+.arayrignt {
+    position: relative;
+}
+
+button {
+    padding: 0;
+}

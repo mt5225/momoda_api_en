@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+section {
+	margin: 0 20px;
+}
+.cmdexplain{
+	margin-top:20px;
+}
+.detailedcont div{
+	font-size: 14px;
+}
+
+h2{
+	border-bottom:1px solid  #c0c0c0;
+	padding-bottom:20px;
+	 
+}
+p {
+	margin: 10px 0;
+}
+
+p b {
+	font-size: 16px;
+}
+.cont{
+	 
+	padding:10px;
+	background-color:#eee;
+}
+.cont span,
+.cont b{
+	margin-right:30px;
+}
+.cont .option
+{
+	margin-right:0;
+}
+.cont b{
+	font-size: 14px;
+}
+pre {
+	border: 1px solid #ff8;
+	background-color: #ffe;
+	font-size: 14px;
+	padding: 10px;
+	font-family: 'Microsoft YaHei';
+}
