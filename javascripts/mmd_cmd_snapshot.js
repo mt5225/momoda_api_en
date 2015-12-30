@@ -3,10 +3,10 @@ var cmds = [
 		"cmd":"Snapshot",
 		"cmdDes":"获得或存储一个视点",
 		"parameters":[	
-			{ "parameter":"name", "des":"视点的名字", "requred":true },
-			{ "parameter":"isSaveToServer", "des":"是否存储到服务器上", "requred":false, "default":false},
-			{ "parameter":"isShowIn3D", "des":"是否在视点托盘里显示", "requred":false, "default":false},
-			{ "parameter":"jsonToBuffer", "des":"设置视点json要存储的buffer", "requred":false}
+			{ "parameter":"name", "des":"视点的名字", "required":true },
+			{ "parameter":"isSaveToServer", "des":"是否存储到服务器上", "required":false, "default":false},
+			{ "parameter":"isShowIn3D", "des":"是否在视点托盘里显示", "required":false, "default":false},
+			{ "parameter":"jsonToBuffer", "des":"设置视点json要存储的buffer", "required":false}
 		],
 		"examples":[	
 			{
@@ -34,7 +34,7 @@ var cmds = [
 		"cmd":"SnapshotRecoverByName",
 		"cmdDes":"通过名字调用恢复一个视点",
 		"parameters":[	
-			{ "parameter":"name", "des":"要恢复的视点名字", "requred":true }
+			{ "parameter":"name", "des":"要恢复的视点名字", "required":true }
 		],
 		"examples":[	
 			{
@@ -52,7 +52,7 @@ var cmds = [
 		"cmd":"SnapshotRecoverByJson",
 		"cmdDes":"通过json数据恢复一个视点",
 		"parameters":[	
-			{ "parameter":"json", "des":"要恢复的视点json数据", "requred":true }
+			{ "parameter":"json", "des":"要恢复的视点json数据", "required":true }
 		],
 		"examples":[	
 			{
@@ -70,7 +70,7 @@ var cmds = [
 		"cmd":"PlaySnapshotAnimByName",
 		"cmdDes":"通过名字播放一个视点动画",
 		"parameters":[	
-			{ "parameter":"name", "des":"要播放的视点动画名字", "requred":true }
+			{ "parameter":"name", "des":"要播放的视点动画名字", "required":true }
 		],
 		"examples":[	
 			{

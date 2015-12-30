@@ -3,10 +3,10 @@ var cmds = [
 		"cmd":"OpenUrl",
 		"cmdDes":"使用输入的url弹开一个页面,等同于在页面上调用window.open ,目前这个命令只能运行于浏览器下使用的情况",
 		"parameters":[	
-			{ "parameter":"url", "des":"要打开的url", "requred":false },
-			{ "parameter":"urlBuffer", "des":"使用buffer提供要打开的url", "requred":false},
+			{ "parameter":"url", "des":"要打开的url", "required":false },
+			{ "parameter":"urlBuffer", "des":"使用buffer提供要打开的url", "required":false},
 			{ "parameter":"param", "des":"打开页面使用的参数，格式和window.open使用的参数相同<br>	" +
-					"如：‘height=100, width=400, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no’", "requred":false},
+					"如：‘height=100, width=400, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no’", "required":false},
 			
 		],
 		"examples":[	
@@ -34,12 +34,12 @@ var cmds = [
 		"cmd":"UrlWindow",
 		"cmdDes":"使用输入的url弹开一个页面窗口 ,目前这个命令只能运行于浏览器下使用的情况",
 		"parameters":[	
-			{ "parameter":"url", "des":"要打开的url", "requred":false },
-			{ "parameter":"urlBuffer", "des":"使用buffer提供要打开的url", "requred":false},
-			{ "parameter":"title", "des":"打开窗口的title文字", "requred":false},
-			{ "parameter":"titleBuffer", "des":"使用buffer提供窗口的title文字", "requred":false},
-			{ "parameter":"width", "des":"打开窗口的宽度", "requred":false},
-			{ "parameter":"height", "des":"打开窗口的位置", "requred":false},
+			{ "parameter":"url", "des":"要打开的url", "required":false },
+			{ "parameter":"urlBuffer", "des":"使用buffer提供要打开的url", "required":false},
+			{ "parameter":"title", "des":"打开窗口的title文字", "required":false},
+			{ "parameter":"titleBuffer", "des":"使用buffer提供窗口的title文字", "required":false},
+			{ "parameter":"width", "des":"打开窗口的宽度", "required":false},
+			{ "parameter":"height", "des":"打开窗口的位置", "required":false},
 		],
 		"examples":[	
 			{
@@ -59,12 +59,12 @@ var cmds = [
 		"cmd":"HtmlWindow",
 		"cmdDes":"使用输入的html文本弹开一个页面窗口 ,目前这个命令只能运行于浏览器下使用的情况",
 		"parameters":[	
-			{ "parameter":"html", "des":"窗口里显示的html", "requred":false },
-			{ "parameter":"htmlBuffer", "des":"使用buffer提供要显示的html", "requred":false},
-			{ "parameter":"title", "des":"打开窗口的title文字", "requred":false},
-			{ "parameter":"titleBuffer", "des":"使用buffer提供窗口的title文字", "requred":false},
-			{ "parameter":"width", "des":"打开窗口的宽度", "requred":false},
-			{ "parameter":"height", "des":"打开窗口的位置", "requred":false}
+			{ "parameter":"html", "des":"窗口里显示的html", "required":false },
+			{ "parameter":"htmlBuffer", "des":"使用buffer提供要显示的html", "required":false},
+			{ "parameter":"title", "des":"打开窗口的title文字", "required":false},
+			{ "parameter":"titleBuffer", "des":"使用buffer提供窗口的title文字", "required":false},
+			{ "parameter":"width", "des":"打开窗口的宽度", "required":false},
+			{ "parameter":"height", "des":"打开窗口的位置", "required":false}
 		],
 		"examples":[	
 			{
@@ -107,7 +107,7 @@ var cmds = [
 		"cmd":"ExecuteHtmlInterface",
 		"cmdDes":"如果模模搭运行于页面上，可以通过这个命令调用页面的js接口",
 		"parameters":[	
-			{ "parameter":"interfaceName", "des":"要运行的js接口", "requred":false },
+			{ "parameter":"interfaceName", "des":"要运行的js接口", "required":false },
 			{ "parameter":"fromBuffer", "des":"将buffer里的内容发送到页面，目前只支持发送模模搭里的物体。要求页面js接口的第一个参数是接收模模搭对象的。<br>	" +
 					"注：<br>	" +
 					"	1. 输出到页面的对象数据结构如下：<br>	" +
@@ -129,8 +129,8 @@ var cmds = [
 					"			'PropertyDict':{'物体类型':'档案盒'}, //物体的自定义属性'<br>	" +
 					"			'MonitorDatas/RealTimeData':{'温度':67} //物体的监控数据'<br>	" +
 					"		}<br>	" +
-					"	2. 如果需要传其他参数，可通过exArguments属性传递", "requred":false},
-			{ "parameter":"exArguments", "des":"输入一个数组,分别是页面js接口的每个输入的参数。", "requred":false }
+					"	2. 如果需要传其他参数，可通过exArguments属性传递", "required":false},
+			{ "parameter":"exArguments", "des":"输入一个数组,分别是页面js接口的每个输入的参数。", "required":false }
 		],
 		"examples":[
 			{

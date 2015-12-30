@@ -10,7 +10,7 @@ var cmds = [
 					"	2. 每个属性可以配置多个响应的数据，并针对那个数据通过数组,设置多条响应命令。<br>	" +
 					"	3. 每个属性可以配置两类数据：文字和数字，如果全部是数字的话，系统会自动排序，并从最小值开始，找到小于等于的数值，执行响应命令。<br>	" +
 					"	4. 当配置的所有数据是文字，可设置一个'_default_',表示当取到的数据没有出现在配置里时执行后面设定响应命令。<br>	" +
-					"	5. 可回调中可使用GetLastMonitorRespondObj获取当前处理对象，也可直接使用内置buffer: {'ObjectManager':'RunBuffer/lastMonitorRespondObj'}直接获取操作对象。" , "requred":true }
+					"	5. 可回调中可使用GetLastMonitorRespondObj获取当前处理对象，也可直接使用内置buffer: {'ObjectManager':'RunBuffer/lastMonitorRespondObj'}直接获取操作对象。" , "required":true }
 		],
 		"examples":[	
 			{
@@ -51,7 +51,7 @@ var cmds = [
 		"cmd":"GetLastMonitorRespondObj",
 		"cmdDes":"获取当前正在处理的监控响应物体",
 		"parameters":[	
-			{ "parameter":"toBuffer", "des":"设置响应物体存放的buffer", "requred":true }
+			{ "parameter":"toBuffer", "des":"设置响应物体存放的buffer", "required":true }
 		],
 		"examples":[
 			{

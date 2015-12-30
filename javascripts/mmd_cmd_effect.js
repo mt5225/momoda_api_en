@@ -1,14 +1,14 @@
 var cmds = [
 	{
 		"cmd":"SetTransparency",
-		"cmdDes":"设置物体透明度",
+		"cmdDes":"Set transparency of given object",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[			
-			{ "parameter":"trans", "des":"要设置的透明度，1为完全透明，0为完全不透明", "requred":true, "default":"", "option":[ ]}	
+			{ "parameter":"trans", "des":"[0-1] 1: 100% transparent，0: No transparency", "required":true, "default":"", "option":[ ]}	
 		],
-		"examples":[
+		"examples": [
 			{
-				"name":"简单设置透明度",
+				"name":"Set Object Transparency",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SetTransparency", <br>' +
@@ -20,15 +20,15 @@ var cmds = [
 	},
 	{
 		"cmd":"SetColor",
-		"cmdDes":"设置物体颜色",
+		"cmdDes":"Set object color",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"color", "des":"要设置的rgb颜色数值，如红色[ 1, 0, 0]", "requred":true},
-			{ "parameter":"ratio", "des":"设置颜色生效的比例,可设置从0到1的数值", "requred":false, "default":1.0}
+			{ "parameter":"color", "des":"Color in RGB，for instance, red [ 1, 0, 0]", "required":true},
+			{ "parameter":"ratio", "des":"Effect ratio, range from 0 to 1", "required":false, "default":1.0}
 		],
 		"examples":[
 			{
-				"name":"简单设置颜色",
+				"name":"Set Object Color",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SetColor",<br> ' +
@@ -41,18 +41,18 @@ var cmds = [
 	},
 	{
 		"cmd":"Fade",
-		"cmdDes":"透明过渡效果",
+		"cmdDes":"Fading effect",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"start", "des":"开始的透明度", "requred":true},
-			{ "parameter":"end", "des":"结束的透明度", "requred":true},
-			{ "parameter":"time", "des":"变化的时间", "requred":false, "default":1.0},
-			{ "parameter":"endAutoRelease", "des":"变换完成后fade效果是否自动清除", "requred":false, "default":true},			
-			{ "parameter":"enable", "des":"控制是否让效果生效", "requred":false, "default":true}			
+			{ "parameter":"start", "des":"Start transparent value", "required":true},
+			{ "parameter":"end", "des":"End transparent value", "required":true},
+			{ "parameter":"time", "des":"Duration", "required":false, "default":1.0},
+			{ "parameter":"endAutoRelease", "des":"If resume after effect", "required":false, "default":true},			
+			{ "parameter":"enable", "des":"If enable fading effect", "required":false, "default":true}			
 		],
 		"examples":[
 			{
-				"name":"控制物体透明度在1秒内从1到0变化",
+				"name":"Fading Effect",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "Fade",<br> ' +
@@ -64,7 +64,7 @@ var cmds = [
 						'}'
 			},
 			{
-				"name":"关闭这个效果",
+				"name":"Disable Effect",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "Fade",<br> ' +
@@ -77,10 +77,10 @@ var cmds = [
 	},
 	{
 		"cmd":"FadeIn",
-		"cmdDes":"使用透明度控制的渐入效果",
+		"cmdDes":"Fade In Effect",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[			
-			{ "parameter":"time", "des":"变化的时间", "requred":false, "default":1.0}	
+			{ "parameter":"time", "des":"Duration", "required":false, "default":1.0}	
 		],
 		"examples":[
 			{
@@ -97,10 +97,10 @@ var cmds = [
 	},	
 	{
 		"cmd":"FadeOut",
-		"cmdDes":"使用透明度控制的渐出效果",
+		"cmdDes":"Fade Out Effect",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[			
-			{ "parameter":"time", "des":"变化的时间", "requred":false, "default":1.0}	
+			{ "parameter":"time", "des":"Duration", "required":false, "default":1.0}	
 		],
 		"examples":[
 			{
@@ -117,17 +117,17 @@ var cmds = [
 	},		
 	{
 		"cmd":"Flash",
-		"cmdDes":"透明闪烁效果",
+		"cmdDes":"Flash Effect",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"start", "des":"闪烁区间的最小透明度", "requred":true},
-			{ "parameter":"end", "des":"闪烁区间的最大透明度", "requred":true},
-			{ "parameter":"time", "des":"变化的周期时间", "requred":false, "default":1.0},		
-			{ "parameter":"enable", "des":"控制是否让效果生效", "requred":false, "default":true}			
+			{ "parameter":"start", "des":"Minimum transparency", "required":true},
+			{ "parameter":"end", "des":"Maxim transparency", "required":true},
+			{ "parameter":"time", "des":"Duration", "required":false, "default":1.0},		
+			{ "parameter":"enable", "des":"If enable", "required":false, "default":true}			
 		],
 		"examples":[
 			{
-				"name":"控制物体透明度在1秒内从1到0变化，循环往复",
+				"name":"Flash Effect",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "Flash",<br> ' +
@@ -138,7 +138,7 @@ var cmds = [
 						'}'
 			},
 			{
-				"name":"关闭这个效果",
+				"name":"Disable Effect",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "Flash",<br> ' +
@@ -151,19 +151,19 @@ var cmds = [
 	},	
 	{
 		"cmd":"ColorFade",
-		"cmdDes":"颜色过渡效果",
+		"cmdDes":"Color Fade Effect",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"color", "des":"设置这个效果使用的颜色", "requred":true},
-			{ "parameter":"start", "des":"颜色效果开始的浓度值", "requred":true},
-			{ "parameter":"end", "des":"颜色效果结束的浓度值", "requred":true},
-			{ "parameter":"time", "des":"变化的时间", "requred":false, "default":1.0},
-			{ "parameter":"endAutoRelease", "des":"变换完成后效果是否自动清除", "requred":false, "default":true},			
-			{ "parameter":"enable", "des":"控制是否让效果生效", "requred":false, "default":true}			
+			{ "parameter":"color", "des":"Color used in effect", "required":true},
+			{ "parameter":"start", "des":"Color density at the start [0-1]", "required":true},
+			{ "parameter":"end", "des":"Color density at the end [0-1]", "required":true},
+			{ "parameter":"time", "des":"Duration", "required":false, "default":1.0},
+			{ "parameter":"endAutoRelease", "des":"If resume after effect", "required":false, "default":true},			
+			{ "parameter":"enable", "des":"If enable", "required":false, "default":true}			
 		],
 		"examples":[
 			{
-				"name":"控制物体在1秒内从无效果色变换到红色",
+				"name":"Change object to red in one second",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "ColorFade",<br>' +
@@ -176,7 +176,7 @@ var cmds = [
 						'}'
 			},
 			{
-				"name":"关闭这个效果",
+				"name":"Disable Effect",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "ColorFade",<br> ' +
@@ -189,18 +189,18 @@ var cmds = [
 	},
 	{
 		"cmd":"ColorFlash",
-		"cmdDes":"颜色闪烁效果",
+		"cmdDes":"Color Flash Effect",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"color", "des":"设置这个效果使用的颜色", "requred":true},
-			{ "parameter":"start", "des":"闪烁区间的最小颜色浓度", "requred":true},
-			{ "parameter":"end", "des":"闪烁区间的最大颜色浓度", "requred":true},
-			{ "parameter":"time", "des":"变化的周期时间", "requred":false, "default":1.0},		
-			{ "parameter":"enable", "des":"控制是否让效果生效", "requred":false, "default":true}			
+			{ "parameter":"color", "des":"Color used in effect", "required":true},
+			{ "parameter":"start", "des":"Color density at the start [0-1]", "required":true},
+			{ "parameter":"end", "des":"Color density at the end [0-1]", "required":true},
+			{ "parameter":"time", "des":"Duration", "required":false, "default":1.0},		
+			{ "parameter":"enable", "des":"If enable", "required":false, "default":true}			
 		],
 		"examples":[
 			{
-				"name":"控制物体颜色在1秒内从1到0变化，循环往复",
+				"name":"Color Flash",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "ColorFlash",<br> ' +
@@ -212,7 +212,7 @@ var cmds = [
 						'}'
 			},
 			{
-				"name":"关闭这个效果",
+				"name":"Disable Effect",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "ColorFlash",<br> ' +
@@ -225,4 +225,4 @@ var cmds = [
 	}
 ]
 
-docCreator.addDocItemFromData("效果", cmds)
+docCreator.addDocItemFromData("Effect", cmds)

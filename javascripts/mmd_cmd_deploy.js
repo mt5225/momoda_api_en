@@ -3,8 +3,8 @@ var cmds = [
 		"cmd":"Deploy",
 		"cmdDes":"指定一些模型，并可在使用的环境下摆放这些模型",
 		"parameters":[			
-			{ "parameter":"enable", "des":"开启，或者关闭这个功能", "requred":false, "default":true},
-			{ "parameter":"items", "des":"设置要放置的模型ID", "requred":false},
+			{ "parameter":"enable", "des":"开启，或者关闭这个功能", "required":false, "default":true},
+			{ "parameter":"items", "des":"设置要放置的模型ID", "required":false},
 		],
 		"examples":[
 			{
@@ -32,9 +32,9 @@ var cmds = [
 		"cmd":"SetDragPlacementParamInDeploy",
 		"cmdDes":"设置拖拽时的效果和功能",
 		"parameters":[
-			{ "parameter":"absorbPlacement", "des":"设置拖拽的物体是否可以吸引到另一个物体上", "requred":false, "default":""},
-			{ "parameter":"absorbNormal", "des":"设置拖拽的物体是否与鼠标拾取的对齐物体面法线对齐", "requred":false, "default":""},
-			{ "parameter":"absorbPivot", "des":"设置拖拽的物体是否与鼠标拾取的对齐物体轴心点对齐", "requred":false, "default":""}
+			{ "parameter":"absorbPlacement", "des":"设置拖拽的物体是否可以吸引到另一个物体上", "required":false, "default":""},
+			{ "parameter":"absorbNormal", "des":"设置拖拽的物体是否与鼠标拾取的对齐物体面法线对齐", "required":false, "default":""},
+			{ "parameter":"absorbPivot", "des":"设置拖拽的物体是否与鼠标拾取的对齐物体轴心点对齐", "required":false, "default":""}
 		],
 		"examples":[
 			{
@@ -55,7 +55,7 @@ var cmds = [
 		"cmd":"GetDeployObjects",
 		"cmdDes":"获取通过Deploy命令打开的面版，摆放的所有物体",
 		"parameters":[
-			{ "parameter":"toBuffer", "des":"设置物体存放的buffer", "requred":true, "default":""}
+			{ "parameter":"toBuffer", "des":"设置物体存放的buffer", "required":true, "default":""}
 		],
 		"examples":[
 			{
@@ -73,7 +73,7 @@ var cmds = [
 		"cmd":"SetDeployObjects",
 		"cmdDes":"将buffer里的物体，设置给Deploy面板，变成通过Deploy命令打开的面版摆放的物体",
 		"parameters":[
-			{ "parameter":"formBuffer", "des":"输入的物体buffer", "requred":true, "default":""}
+			{ "parameter":"formBuffer", "des":"输入的物体buffer", "required":true, "default":""}
 		],
 		"examples":[
 			{
@@ -91,7 +91,7 @@ var cmds = [
 		"cmd":"GetDeployToJson",
 		"cmdDes":"获取通过Deploy命令打开的面版，摆放的所有物体，并将其变成json数据，存于buffer中",
 		"parameters":[
-			{ "parameter":"toBuffer", "des":"设置物体json数据存放的buffer", "requred":true, "default":""}
+			{ "parameter":"toBuffer", "des":"设置物体json数据存放的buffer", "required":true, "default":""}
 		],
 		"examples":[
 			{
@@ -109,7 +109,7 @@ var cmds = [
 		"cmd":"SetDeployFromJson",
 		"cmdDes":"按照标准输入json，可将json指定的物体输入到Deploy模块中，并创建这些物体",
 		"parameters":[
-			{ "parameter":"json", "des":"输入的物体json数据", "requred":true, "default":""}
+			{ "parameter":"json", "des":"输入的物体json数据", "required":true, "default":""}
 		],
 		"examples":[
 			{
@@ -140,7 +140,7 @@ var cmds = [
 		"cmd":"ClearDeployObjects",
 		"cmdDes":"清除已经摆放的物体",
 		"parameters":[
-			{ "parameter":"destroyObjects", "des":"设置在清除的同时，是否彻底删除场景里的对应的物体。如果输入false，在清除后，场景里还存在这些物体，只不过Deploy模块里不管理这些物体了", "requred":false, "default":true}
+			{ "parameter":"destroyObjects", "des":"设置在清除的同时，是否彻底删除场景里的对应的物体。如果输入false，在清除后，场景里还存在这些物体，只不过Deploy模块里不管理这些物体了", "required":false, "default":true}
 		],
 		"examples":[
 			{

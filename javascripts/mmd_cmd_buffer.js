@@ -71,10 +71,10 @@ var cmds = [
 	},	
 	{
 		"cmd":"SetObjectsToBuffer",
-		"cmdDes":"assign object to buffer",
+		"cmdDes":"Assign object to buffer",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[			
-			{ "parameter":"toBuffer", "des":"buffer path", "requred":true, "default":""}
+			{ "parameter":"toBuffer", "des":"buffer path", "required":true, "default":""}
 		],
 		"examples":[
 			{
@@ -108,7 +108,7 @@ var cmds = [
 	},
 	{
 		"cmd":"SetBufferValue",
-		"cmdDes":"assign value to buffer", 
+		"cmdDes":"Assign value to buffer", 
 		"parameters":[
 			{ "parameter":"toBuffer", "des":"buffer path", "required":true, "default":""},
 			{ "parameter":"value", "des":"value", "required":true, "default":""}

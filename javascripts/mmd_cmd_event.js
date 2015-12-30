@@ -4,9 +4,9 @@ var cmds = [
 		"cmdDes":"注册事件。<br>	" +
 				"注：这个命令不支持全部的标准物体输入参数，只支持id和uid",
 		"parameters":[			
-			{ "parameter":"id", "des":"输入模模搭内置物体id，指定给哪个物体设置事件", "requred":false},
-			{ "parameter":"uid", "des":"输入物体的用户定义id(UserID)，指定给哪个物体设置事件", "requred":false},
-			{ "parameter":"condition", "des":"输入条件，指定给符合这个条件的物体设置事件", "requred":false},
+			{ "parameter":"id", "des":"输入模模搭内置物体id，指定给哪个物体设置事件", "required":false},
+			{ "parameter":"uid", "des":"输入物体的用户定义id(UserID)，指定给哪个物体设置事件", "required":false},
+			{ "parameter":"condition", "des":"输入条件，指定给符合这个条件的物体设置事件", "required":false},
 			{ "parameter":"event", "des":"设定要触发的事件，为了支持同一个事件驱动多个回调，这里可以自由添加子名称，使用\"/\"分隔，如 AddToSelection/回调1。<br>	" +
 					"比如：一个模块对一个物体注册了选择时弹出物体面板，另一个模块又对这个物体注册了选择时头顶图标，两个事件都是选择，所以需要一个子名称来区别。<br>	" +
 					"<a onclick=showText('" +
@@ -55,9 +55,9 @@ var cmds = [
 					"EndSnapshotAnim\\n"+
 					"SnapshotAnimToolsStartAnim\\n"+
 					"SnapshotAnimToolsEndAnim"+
-					"');>(可调用的事件列表)</a>", "requred":true},
-			{ "parameter":"priority", "des":"对同一个物体同时发生多个相同事件时，通过这个属性设置优先级，越大越优先执行", "requred":false,"default":50},
-			{ "parameter":"cmds", "des":"事件发生时的回调", "requred":true}
+					"');>(可调用的事件列表)</a>", "required":true},
+			{ "parameter":"priority", "des":"对同一个物体同时发生多个相同事件时，通过这个属性设置优先级，越大越优先执行", "required":false,"default":50},
+			{ "parameter":"cmds", "des":"事件发生时的回调", "required":true}
 		],
 		"examples":[
 			{
@@ -103,11 +103,11 @@ var cmds = [
 		"cmd":"UnregEvent",
 		"cmdDes":"注销事件" ,
 		"parameters":[
-			{ "parameter":"id", "des":"输入模模搭内置物体id，指定给哪个物体注销事件", "requred":false},
-			{ "parameter":"uid", "des":"输入物体的用户定义id(UserID)，指定给哪个物体注销事件", "requred":false},
-			{ "parameter":"condition", "des":"输入条件，指定给符合这个条件的物体注销事件，和RegEvent里的condition兼容", "requred":false},
+			{ "parameter":"id", "des":"输入模模搭内置物体id，指定给哪个物体注销事件", "required":false},
+			{ "parameter":"uid", "des":"输入物体的用户定义id(UserID)，指定给哪个物体注销事件", "required":false},
+			{ "parameter":"condition", "des":"输入条件，指定给符合这个条件的物体注销事件，和RegEvent里的condition兼容", "required":false},
 			{ "parameter":"event", "des":"设定要触发的事件，同RegEvent一样，需要填写子名称 <br>	" +
-					"注：如果不填写子名称，将把所有挂在事件下回调都注销", "requred":true}
+					"注：如果不填写子名称，将把所有挂在事件下回调都注销", "required":true}
 		],
 		"examples":[
 			{
@@ -126,7 +126,7 @@ var cmds = [
 		"cmdDes":"当一个事件发生时，获取这个事件的对象放到缓冲里" ,
 		"parameters":[
 			{ "parameter":"toBuffer", "des":"设定要放置的缓冲 <br>	" +
-					"注：其实内部已经将事件物体放到了{\"ObjectManager\":\"RunBuffer/lastEventObj\"}", "requred":true}
+					"注：其实内部已经将事件物体放到了{\"ObjectManager\":\"RunBuffer/lastEventObj\"}", "required":true}
 		],
 		"examples":[
 			{
@@ -139,9 +139,9 @@ var cmds = [
 		"cmd":"RegIgnoreEvent",
 		"cmdDes":"通过条件可以临时屏蔽事件，等需要时再恢复" ,
 		"parameters":[
-			{ "parameter":"condition", "des":"输入条件，指定给符合这个条件的物体临时屏蔽事件，和RegEvent里的condition兼容", "requred":true},
+			{ "parameter":"condition", "des":"输入条件，指定给符合这个条件的物体临时屏蔽事件，和RegEvent里的condition兼容", "required":true},
 			{ "parameter":"event", "des":"设定要屏蔽的事件，同RegEvent一样，需要填写子名称 <br>		" +
-					"注：如果不填写子名称，将把所有挂在事件下回调都屏蔽", "requred":true}
+					"注：如果不填写子名称，将把所有挂在事件下回调都屏蔽", "required":true}
 		],
 		"examples":[
 			{
@@ -159,8 +159,8 @@ var cmds = [
 		"cmd":"UnregIgnoreEvent",
 		"cmdDes":"恢复临时屏蔽的事件，要求和使用RegIgnoreEvent注册时输入的内容保持一致" ,
 		"parameters":[
-			{ "parameter":"condition", "des":"使用RegIgnoreEvent注册时输入的条件", "requred":true},
-			{ "parameter":"event", "des":"	使用RegIgnoreEvent注册时输入的事件", "requred":true}
+			{ "parameter":"condition", "des":"使用RegIgnoreEvent注册时输入的条件", "required":true},
+			{ "parameter":"event", "des":"	使用RegIgnoreEvent注册时输入的事件", "required":true}
 		],
 		"examples":[
 			{

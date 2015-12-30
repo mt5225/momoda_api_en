@@ -3,8 +3,8 @@ var cmds = [
 		"cmd":"DownloadBundle",
 		"cmdDes":"下载模型",
 		"parameters":[			
-			{ "parameter":"bundleId", "des":"要下载的模型id", "requred":true, "default":""},
-			{ "parameter":"cmds", "des":"下载完模型后，会回调这里面输入的命令，注意这里因为下载是异步的，所有回调也是异步执行的", "requred":false, "default":""},
+			{ "parameter":"bundleId", "des":"要下载的模型id", "required":true, "default":""},
+			{ "parameter":"cmds", "des":"下载完模型后，会回调这里面输入的命令，注意这里因为下载是异步的，所有回调也是异步执行的", "required":false, "default":""},
 		],
 		"examples":[
 			{

@@ -12,8 +12,8 @@ var cmds = [
 				"",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"path", "des":"要访问属性的路径，可以是多个级，比如 \"PropertyDict/物体类型\"，可访问到自定义属性里的物体类型这个数据", "requred":true},
-			{ "parameter":"toBuffer", "des":"要存储的buffer路径" , "requred":true}
+			{ "parameter":"path", "des":"要访问属性的路径，可以是多个级，比如 \"PropertyDict/物体类型\"，可访问到自定义属性里的物体类型这个数据", "required":true},
+			{ "parameter":"toBuffer", "des":"要存储的buffer路径" , "required":true}
 		],
 		"examples":[
 			{
@@ -54,14 +54,14 @@ var cmds = [
 		"cmdDes":"设置对象的属性。" ,
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"path", "des":"要访问属性的路径,可以是多个级,比如 \"PropertyDict/物体类型\"", "requred":true},
+			{ "parameter":"path", "des":"要访问属性的路径,可以是多个级,比如 \"PropertyDict/物体类型\"", "required":true},
 			{ "parameter":"value", "des":"要设置的值。<br>	" +
 					"注：模模搭内部开发是使用强数据类型语言，这个命令是通用命令，不同的物体的不同属性需要不同的数据类型，这里填写数据不像在命令里那样符合json标准就行了，有的要表示数据类型。<br>	" +
 					"属性的值如果是字符串，数字，布尔可以正常填写。<br>	" +
 					"如果是 vector3，color等这种不能简单使用数组，要写成下面的形式<br>	" +
 					"{\"Vector3\":[1,0,0]}<br>	" +
 					"{\"Vector2\":[1,0]}<br>	" +
-					"{\"Color\":[1,0,0,1]}<br>	", "requred":true},
+					"{\"Color\":[1,0,0,1]}<br>	", "required":true},
 		],
 		"examples":[
 			{
@@ -93,9 +93,9 @@ var cmds = [
 				"",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"path", "des":"调用方法的路径，和SetValue一样，可以是多级路径", "requred":true},
-			{ "parameter":"params", "des":"调用对象方法需传入的参数", "requred":false},
-			{ "parameter":"toBuffer", "des":"有的调用方法会返回结果，可以放到缓冲里", "requred":false}
+			{ "parameter":"path", "des":"调用方法的路径，和SetValue一样，可以是多级路径", "required":true},
+			{ "parameter":"params", "des":"调用对象方法需传入的参数", "required":false},
+			{ "parameter":"toBuffer", "des":"有的调用方法会返回结果，可以放到缓冲里", "required":false}
 		],
 		"examples":[
 			{

@@ -1,8 +1,8 @@
 var cmds = [
 	{
 		"cmd":"AddToCandidate",
-		"cmdDes":"添加到候选集，让物体可以选取。<br>	" +
-				"注：在模模搭内场景层级发生切换后，候选集会重新设定，要注意。",
+		"cmdDes":"Add objects to 'candidate set'<br>	" +
+				"Note: candidate set will be reset after scene switch",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[			
 			
@@ -20,8 +20,8 @@ var cmds = [
 	},
 	{
 		"cmd":"ClearCandidate",
-		"cmdDes":"清空候选集,所有物体都不能选。<br>	" +
-				"注：在模模搭内场景层级发生切换后，候选集会重新设定，要注意。",
+		"cmdDes":"Empty candidate set<br>	" +
+				"Note: candidate set will be reset after scene switch",
 		"parameters":[	
 			
 		],
@@ -37,8 +37,8 @@ var cmds = [
 	},
 	{
 		"cmd":"RemoveFromCandidate",
-		"cmdDes":"让输入的物体从候选集中排除。<br>	" +
-				"注：在模模搭内场景层级发生切换后，候选集会重新设定，要注意。",
+		"cmdDes":"Remove objects from candidate set<br>	" +
+				"Note: candidate set will be reset after scene switch",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[			
 			
@@ -56,7 +56,7 @@ var cmds = [
 	},		
 	{
 		"cmd":"AddToSelection",
-		"cmdDes":"添加到选择集，让物体处于被选择状态。" ,
+		"cmdDes":"Add objects to 'selection set' and marked as 'selected'" ,
 		"parameterInherit":"ObjectCommand",
 		"parameters":[			
 			
@@ -74,7 +74,7 @@ var cmds = [
 	},	
 	{
 		"cmd":"ClearSelection",
-		"cmdDes":"清空选择集",
+		"cmdDes":"Empty selection set and marked all objects in selection set as 'unselected'",
 		"parameters":[			
 			
 		],
@@ -90,7 +90,7 @@ var cmds = [
 	},
 	{
 		"cmd":"RemoveFromSelection",
-		"cmdDes":"让输入的物体从选择集中排除。" ,
+		"cmdDes":"Remove objects from selection set and marked as 'unselected'" ,
 		"parameterInherit":"ObjectCommand",
 		"parameters":[	
 			
@@ -108,9 +108,9 @@ var cmds = [
 	},	
 	{
 		"cmd":"GetSelection",
-		"cmdDes":"获取当前正在选择的物体,存到buffer里。" ,
+		"cmdDes":"Save objects in selection set to buffer" ,
 		"parameters":[
-			{ "parameter":"toBuffer", "des":"设定要存储所选物体的buffer", "requred":true}
+			{ "parameter":"toBuffer", "des":"Buffer to save object", "required":true}
 		],
 		"examples":[
 			{
@@ -125,7 +125,7 @@ var cmds = [
 	},		
 	{
 		"cmd":"LockSelection",
-		"cmdDes":"锁定选择集，此时已经选取的物体不能变成未选状态,也不能新选物体",
+		"cmdDes":"Lock selection set, cannot remove or add new object if locked",
 		"parameters":[			
 			
 		],
@@ -141,7 +141,7 @@ var cmds = [
 	},	
 	{
 		"cmd":"UnlockSelection",
-		"cmdDes":"解锁选择集",
+		"cmdDes":"Unlock selection set",
 		"parameters":[			
 			
 		],
@@ -157,9 +157,9 @@ var cmds = [
 	},		
 	{
 		"cmd":"EnableRectangleSelect",
-		"cmdDes":"开启或关闭框选功能。" ,		
+		"cmdDes":"Enable bulk selector in UI" ,		
 		"parameters":[			
-			{ "parameter":"enable", "des":"输入true或者false，控制是否开启框选功能", "requred":true}
+			{ "parameter":"enable", "des":"True of False", "required":true}
 		],
 		"examples":[
 			{
@@ -175,9 +175,9 @@ var cmds = [
 	
 	{
 		"cmd":"EnalbeCheckRectangleUpdate",
-		"cmdDes":"设置框选时是否实时刷新选择结果。在物体数量较多的情况下，建议输入false关闭这个功能，让框选操作过程流畅，只在松开鼠标后，再计算选择结果。" ,		
+		"cmdDes":"Update bulk selection in realtime, recommended value: false" ,		
 		"parameters":[			
-			{ "parameter":"enable", "des":"输入true或者false，控制是否开启框选实时刷新", "requred":true}
+			{ "parameter":"enable", "des":"True or False", "required":true}
 		],
 		"examples":[
 			{
@@ -193,9 +193,9 @@ var cmds = [
 	
 	{
 		"cmd":"LimitRectangleSelectNum",
-		"cmdDes":"可以控制一次框选过程中最多可以选择的物体数量。" ,		
+		"cmdDes":"Limit number of selected objects by bulk selector" ,		
 		"parameters":[			
-			{ "parameter":"num", "des":"输入一次框选过程中最多可以选择的物体数量", "requred":true}
+			{ "parameter":"num", "des":"maxim number of selected objects by bulk selector", "required":true}
 		],
 		"examples":[
 			{
@@ -211,5 +211,5 @@ var cmds = [
 	
 ]
 
-docCreator.addDocItemFromData("选择", cmds)
+docCreator.addDocItemFromData("Selection", cmds)
 
