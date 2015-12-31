@@ -1,20 +1,19 @@
 var cmds = [
 	{
 		"cmd":"ShowPanel",
-		"cmdDes":"设定模模搭内置界面的显示或隐藏。",
+		"cmdDes":"Show or hide setting panel",
 		"parameters":[	
-			{ "parameter":"panel", "des":"输入要控制面板的名字<br>	" +
-					"可控制的面板清单:<br>	" +
-					"	viewPointPanel： 视点和视点动画界面<br>	" +
-					"	fuctionListPanel： 工具清单界面<br>	" +
-					//"	searchPanel： 界面<br>	" +
-					"	switch3dPanel： 3D转2D界面切换工具<br>	" +
-					"	effectPanel： 效果控制界面<br>	" +
-					"	screenShotPanel： 屏幕打印工具<br>	" +
-					"	levelPanel： 楼层控制界面<br>	" +
+			{ "parameter":"panel", "des":"Name of the panel<br>	" +
+					"can be one of:<br>	" +
+					"	viewPointPanel： Viewpoint Panel<br>	" +
+					"	fuctionListPanel： Function List Panel<br>	" +
+					"	switch3dPanel： 2D-3D Switch Panel<br>	" +
+					"	effectPanel： Effect Panel<br>	" +
+					"	screenShotPanel： ScreenShot Panel<br>	" +
+					"	levelPanel： Floor Panel<br>	" +
 					"", "required":true },
 					
-			{ "parameter":"enable", "des":"设定是否显示界面", "required":true }
+			{ "parameter":"enable", "des":"Show or hide panel", "required":true }
 		],
 		"examples":[
 			{
@@ -31,9 +30,9 @@ var cmds = [
 	
 	{
 		"cmd":"CreatePlacemarkTemplate",
-		"cmdDes":"创建界面模板。",
+		"cmdDes":"Create new UI panel",
 		"parameters":[
-			{ "parameter":"template", "des":"要设定模板的内容，具体内容看下方例子。", "required":true }
+			{ "parameter":"template", "des":"Panel settings, refer to below example for details", "required":true }
 		],
 		"examples":[
 			{
@@ -42,59 +41,59 @@ var cmds = [
 						'{<br>' +
 						'	"cmd": "CreatePlacemarkTemplate", <br>' +
 						'	"template":{ <br>' +
-						'	    "name": "模板例子",<br><br>' +
-						'		//设置界面整体的大小<br>' +
+						'	    "name": "Template Example",<br><br>' +
+						'		//panel size<br>' +
 						'	    "bgWidth": 243,<br>' +
 						'	    "bgHeight": 149,<br><br>' +
-						'		//设置界面整体轴心点位置<br>' +
-						'		"horizontalAlignment":"LEFT",	// 水平方向上轴心点的位置，可填写 LEFT CENTER RIGHT<br>' +
-						'		"verticalAlignment":"TOP",	// 垂直方向上轴心点的位置,可填写 TOP CENTER BOTTOM<br><br>' +
-						'		//配置界面中使用的控件<br>' +
+						'		//position of panel axis<br>' +
+						'		"horizontalAlignment":"LEFT",	// horizontal position, can be one of LEFT CENTER RIGHT<br>' +
+						'		"verticalAlignment":"TOP",	// vertical position, can be one of TOP CENTER BOTTOM<br><br>' +
+						'		//controls included in panel<br>' +
 						'	    "showMapping": {<br>' +
-						'			"背景": {<br>' +
-						'				//控件基础参数<br>' +
+						'			"Background": {<br>' +
+						'				//parameters<br>' +
 						'				"type": "image",<br>' +
 						'	            "sortOrder": 0,<br>' +
 						'	            "drawPos": [0, 0],<br>' +
 						'	            "drawSize": [ 243, 149 ],<br>' +
 						'				<br>' +
-						'				//设置轴心点<br>' +
-						'				"horizontalAlignment":"LEFT",	//水平方向上轴心点的位置<br>' +
-						'				"horizontalAlignmentOffset":0,	//水平方向上轴心点的位置的偏移量<br>' +
-						'				"verticalAlignment":"TOP",	//垂直方向上轴心点的位置<br>' +
-						'				"verticalAlignmentOffset":0,	//水平方向上轴心点的位置的偏移量<br>' +
+						'				//control axis position<br>' +
+						'				"horizontalAlignment":"LEFT",	//horizontal position, can be one of LEFT CENTER RIGHT<br>' +
+						'				"horizontalAlignmentOffset":0,	//horizontal offset<br>' +
+						'				"verticalAlignment":"TOP",	//vertical position, can be one of TOP CENTER BOTTOM<br>' +
+						'				"verticalAlignmentOffset":0,	//vertical offset<br>' +
 						'				<br>' +
-						'				//控件私有参数<br>' +	
+						'				//private parameters<br>' +	
 						'				"image":"userimage/4815/CustomTexture/20151023824126.png",<br>' +
-						'				"color":[0,0,1],	//颜色可以和image混合生效<br>' +
+						'				"color":[0,0,1],	//color settings may mix with image <br>' +
 						'				<br>' +
-						'				//数据获取<br>' +
+						'				//data source settings<br>' +
 						'				"getMethod": "objectPropertyMapping",<br>' +
-						'				"propertyPath":"MonitorDatas/RealTimeData/工作状态",<br>' +
+						'				"propertyPath":"MonitorDatas/RealTimeData/status",<br>' +
 						'				"objectPropertyMapping":{<br>' +
-						'					"_default_":"userimage/4815/CustomTexture/1.png",	//设置字符串代表给image设置<br>' +
-						'					"报警":{"color":[1,0.2,0.2]},	//可以不改变贴图的情况下，设置颜色<br>' +
-						'					"错误":{	//可以即改变贴图又设置颜色<br>' +
+						'					"_default_":"userimage/4815/CustomTexture/1.png",	//image location<br>' +
+						'					"alarms":{"color":[1,0.2,0.2]},	//change color<br>' +
+						'					"error":{	//change color and texture at the same time<br>' +
 						'						"image":"userimage/4815/CustomTexture/3.png",<br>' +
 						'						"color":[1,0,0]<br>' +
 						'					}<br>' +
 						'				}<br>' +
 						'		},<br>' +
-						'		"名字": {<br>' +
-						'				//控件基础参数<br>' +
+						'		"name": {<br>' +
+						'				//parameters<br>' +
 						'				"type": "text",<br>' +
 						'	            "sortOrder": 1,<br>' +
 						'	            "drawPos": [0, 0],<br>' +
 						'	            "drawSize": [243, 39],<br>' +
 						'				<br>' +
-						'				//设置轴心点<br>' +
-						'				"horizontalAlignment":"LEFT",	//水平方向上轴心点的位置<br>' +
-						'				"horizontalAlignmentOffset":0,	//水平方向上轴心点的位置的偏移量<br>' +
-						'				"verticalAlignment":"TOP",	//垂直方向上轴心点的位置<br>' +
-						'				"verticalAlignmentOffset":0,	//水平方向上轴心点的位置的偏移量<br>' +
+						'				//axis position<br>' +
+						'				"horizontalAlignment":"LEFT",	//horizontal position, can be one of LEFT CENTER RIGHT<br>' +
+						'				"horizontalAlignmentOffset":0,	//horizontal offset<br>' +
+						'				"verticalAlignment":"TOP",	//vertical position, can be one of TOP CENTER BOTTOM<br>' +
+						'				"verticalAlignmentOffset":0,	//vertical offset<br>' +
 						'				<br>' +
-						'				//控件私有参数<br>' +
-						'	            "fontFamily": "Arial",	//字体目前就一种<br>' +
+						'				//private  parameters<br>' +
+						'	            "fontFamily": "Arial",	//font family<br>' +
 						'	            "fontSize": 14,<br>' +
 						'	            "fontColor": [1,1,1,1],<br>' +
 						'	            "fontStyle": "Bold",<br>' +
@@ -113,43 +112,43 @@ var cmds = [
 						'	            "horizontalWriterAlignment": "TOP",<br>' +
 						'	            "verticalWriterAlignment": "LEFT",<br>' +
 						'				<br>' +
-						'				//数据获取<br>' +
+						'				//data source<br>' +
 						'				"getMethod": "objectProperty",<br>' +
 						'	            "propertyPath": "UserID"<br>' +
 						'	        },<br>' +
-						'			"状态": {<br>' +
-						'				//控件基础参数<br>' +
+						'			"status": {<br>' +
+						'				//control parameters<br>' +
 						'				"type": "text",<br>' +
 						'	            "sortOrder": 1,<br>' +
 						'	            "drawPos": [26,80],<br>' +
 						'	            "drawSize": [50,30],<br>' +
 						'				<br>' +
-						'				//控件私有参数（只列了最常用的）<br>' +
+						'				//control private paramters, list only common ones<br>' +
 						'	            "fontSize": 14,<br>' +
 						'	            "fontColor": [1,1,1,1],<br>' +
 						'				<br>' +
-						'				//数据获取<br>' +
+						'				//data source<br>' +
 						'	            "getMethod": "objectPropertyMapping",<br>' +
-						'	            "propertyPath": "MonitorDatas/RealTimeData/工作状态",<br>' +
+						'	            "propertyPath": "MonitorDatas/RealTimeData/status",<br>' +
 						'				"objectPropertyMapping":{<br>' +
-						'					"_default_":{"text":"正常", "fontColor":[0,1,0]},<br>' +
-						'					"false":{"text": "错误", "fontColor":[1,0,0]}<br>' +
+						'					"_default_":{"text":"Normal", "fontColor":[0,1,0]},<br>' +
+						'					"false":{"text": "Error", "fontColor":[1,0,0]}<br>' +
 						'				}<br>' +
 						'	        },		<br>' +
-						'	         "条状进度条": {<br>' +
-						'				//控件基础参数<br>' +
+						'	         "progressBar": {<br>' +
+						'				//parameters<br>' +
 						'				"type": "progressBar",<br>' +
 						'	            "sortOrder": 1,<br>' +
 						'	            "drawPos": [74, 40],<br>' +
 						'	            "drawSize": [128, 20],<br>' +
 						'				<br>' +
-						'				//设置轴心点<br>' +
-						'				"horizontalAlignment":"LEFT",	//水平方向上轴心点的位置<br>' +
-						'				"horizontalAlignmentOffset":0,	//水平方向上轴心点的位置的偏移量<br>' +
-						'				"verticalAlignment":"TOP",	//垂直方向上轴心点的位置<br>' +
-						'				"verticalAlignmentOffset":0,	//水平方向上轴心点的位置的偏移量<br>' +
+						'				//axis position<br>' +
+						'				"horizontalAlignment":"LEFT",	//horizontal position, can be one of LEFT CENTER RIGHT<br>' +
+						'				"horizontalAlignmentOffset":0,	//horizontal offset<br>' +
+						'				"verticalAlignment":"TOP",	//vertical position, can be one of TOP CENTER BOTTOM<br>' +
+						'				"verticalAlignmentOffset":0,	//vertical offset<br>' +
 						'				<br>' +
-						'				//控件私有参数<br>' +
+						'				//private parameters<br>' +
 						'				"fillDir": "right",	//"up" "down" "left" "right"<br>' +
 						'				"barImage":"uGUI/ProgressBar/img_0",<br>' +
 						'	            "min": 20,<br>' +
@@ -162,27 +161,27 @@ var cmds = [
 						'	                "0.90": [1,0.15,0.15]<br>' +
 						'	            },<br>' +
 						'				<br>' +
-						'				//数据获取<br>' +
+						'				//data source<br>' +
 						'	            "getMethod": "objectProperty",<br>' +
-						'	            "propertyPath": "MonitorDatas/RealTimeData/湿度"<br>' +
+						'	            "propertyPath": "MonitorDatas/RealTimeData/humidity"<br>' +
 						'	        },<br>' +
-						'			"饼图": {<br>' +
-						'				//控件基础参数<br>' +
+						'			"pieChart": {<br>' +
+						'				//parameters<br>' +
 						'				"type": "progressPie",<br>' +
 						'	            "sortOrder": 1,<br>' +
 						'	            "drawPos": [99,90],<br>' +
 						'	            "drawSize": [50,50],<br>' +
 						'				<br>' +
-						'				//设置轴心点<br>' +
-						'				"horizontalAlignment":"LEFT",	//水平方向上轴心点的位置<br>' +
-						'				"horizontalAlignmentOffset":0,	//水平方向上轴心点的位置的偏移量<br>' +
-						'				"verticalAlignment":"TOP",	//垂直方向上轴心点的位置<br>' +
-						'				"verticalAlignmentOffset":0,	//水平方向上轴心点的位置的偏移量<br>' +
+						'				//axis position<br>' +
+						'				"horizontalAlignment":"LEFT",	//horizontal position, can be one of LEFT CENTER RIGHT<br>' +
+						'				"horizontalAlignmentOffset":0,	//horizontal offset<br>' +
+						'				"verticalAlignment":"TOP",	//vertical position, can be one of TOP CENTER BOTTOM<br>' +
+						'				"verticalAlignmentOffset":0,	//horizontal offset<br>' +
 						'				<br>' +
-						'				//控件私有参数<br>' +
+						'				//private parameters<br>' +
 						'				"openAngle":"360",<br>' +
-						'				"fillDirClockwise":true,	//顺时针<br>' +
-						'				"ringImage":"uGUI/ProgressBar/img_3",	// 3是圆<br>' +
+						'				"fillDirClockwise":true,	//clockwise<br>' +
+						'				"ringImage":"uGUI/ProgressBar/img_3",	//image path<br>' +
 						'				"rotation":0,<br>' +
 						'	            "min": 20,<br>' +
 						'	            "max": 30,<br>' +
@@ -194,28 +193,28 @@ var cmds = [
 						'	                "0.90": [1,0.15,0.15]<br>' +
 						'	            },	<br>' +
 						'				<br>' +
-						'				//数据获取<br>' +
+						'				//data source<br>' +
 						'	            "getMethod": "objectProperty",<br>' +
-						'	            "propertyPath": "MonitorDatas/RealTimeData/湿度"<br>' +
+						'	            "propertyPath": "MonitorDatas/RealTimeData/humidity"<br>' +
 						'	 		<br>' +
 						'	        },<br>' +
-						'			"环状图": {<br>' +
-						'				//控件基础参数<br>' +
+						'			"ringChart": {<br>' +
+						'				//parameters<br>' +
 						'				"type": "progressRing",<br>' +
 						'	            "sortOrder": 1,<br>' +
 						'	            "drawPos": [149,90],<br>' +
 						'	            "drawSize": [50,50],<br>' +
 						'				<br>' +
-						'				//设置轴心点<br>' +
+						'				//axis<br>' +
 						'				"verticalAlignment":"CENTER",<br>' +
 						'				"verticalAlignmentOffset":0,<br>' +
 						'				"horizontalAlignment":"CENTER",<br>' +
 						'				"horizontalAlignmentOffset":0,<br>' +
 						'				<br>' +
-						'				//控件私有参数<br>' +
+						'				//private control<br>' +
 						'				"openAngle":"360",<br>' +
-						'				"fillDirClockwise":false,	// 逆时针<br>' +
-						'				"ringImage":"uGUI/ProgressBar/img_2",	// 1 2 是圆环<br>' +
+						'				"fillDirClockwise":false,	// counter clockwise <br>' +
+						'				"ringImage":"uGUI/ProgressBar/img_2",	//image path<br>' +
 						'				"rotation":0,<br>' +
 						'	            "min": 20,<br>' +
 						'	            "max": 30,<br>' +
@@ -227,61 +226,61 @@ var cmds = [
 						'	                "0.90": [1,0.15,0.15]<br>' +
 						'	            },	<br>' +
 						'				<br>' +
-						'				//数据获取<br>' +
+						'				//data source<br>' +
 						'				"getMethod": "objectProperty",<br>' +
-						'	            "propertyPath": "MonitorDatas/RealTimeData/湿度",<br>' +
+						'	            "propertyPath": "MonitorDatas/RealTimeData/humidity",<br>' +
 						'	        },<br>' +
-						'			"显示值": {<br>' +
-						'				//控件基础参数<br>' +
+						'			"DisplyValue": {<br>' +
+						'				//parameters<br>' +
 						'				"type": "text",	<br>' +
 						'	            "sortOrder": 2,<br>' +
 						'	            "drawPos": [74,65],<br>' +
 						'	            "drawSize": [128,20],<br>' +
 						'				<br>' +
-						'	           //数据获取<br>' +
+						'	           //data source<br>' +
 						'	            "getMethod": "objectProperty",<br>' +
-						'	            "propertyPath": "MonitorDatas/RealTimeData/湿度"<br>' +
+						'	            "propertyPath": "MonitorDatas/RealTimeData/humidity"<br>' +
 						'	        },<br>' +
-						'			"按钮": {<br>' +
-						'				//控件基础参数<br>' +
+						'			"Button": {<br>' +
+						'				//parameters<br>' +
 						'				"type": "button",<br>' +
 						'	            "sortOrder": 1,<br>' +
 						'	            "drawPos": [194,98],<br>' +
 						'				"drawSize": [35,22],<br>' +
 						'				<br>' +
-						'	            //控件私有参数<br>' +
+						'	            //private parameters<br>' +
 						'	            "fontSize": 12,	<br>' +
 						'	            "fontColor": [0.235,0.792,0.501,1],<br>' +
-						'				"title":"详细",<br>' +
+						'				"title":"Details",<br>' +
 						'				"normalColor": [0.3,0.5,0.3,0],<br>' +
 						'	            "highlightedColor": [1,1,1],<br>' +
 						'	            "pressedColor": [0.6,0.5,0.2,0],<br>' +
 						'				<br>' +
 						'				"cmds":[<br>' +
-						'					{"cmd":"OpenUrl", "uid":{"objectManager":"Runbuffer/按钮1"} }<br>' +
+						'					{"cmd":"OpenUrl", "uid":{"objectManager":"Runbuffer/Button1"} }<br>' +
 						'				],<br>' +
 						'				"cmdsImmediate":false<br>' +
 						'	        },<br>' +
-						'			"开关按钮": {<br>' +
-						'				//控件基础参数<br>' +
+						'			"SwitchButton": {<br>' +
+						'				//parameters<br>' +
 						'				"type": "toggle",<br>' +
 						'	         	"sortOrder": 1,<br>' +
 						'	            "drawPos": [194,98],<br>' +
 						'				"drawSize": [35,22],<br>' +
 						'				<br>' +
-						'	            //控件私有参数<br>' +
-						'				"images":["http://www.3momoda.com/images/add_01.png","images/add_02.png","images/add_02.png"],	// 三张图分别是1 平时图片 2鼠标放上时图片 3点击后图片,路径是可以使完全url，也可以是去除域名的相对路径<br>' +
+						'	            //private parameters<br>' +
+						'				"images":["http://www.3momoda.com/images/add_01.png","images/add_02.png","images/add_02.png"],	//images use for normal, mouse over and mouse leave events. image url can be absolute，or relative to mmd server url<br>' +
 						'	            "fontSize": 12,	<br>' +
 						'	            "fontColor": [0.235,0.792,0.501,1],<br>' +
-						'				"title":"开",<br>' +
+						'				"title":"Open",<br>' +
 						'				"checked":true,<br>' +
-						'				"setCheckedExe":false,	//当通过属性checked设置按钮时，是否运行对应的命令<br>' +
+						'				"setCheckedExe":false,	//if run command while checked<br>' +
 						'				<br>' +
 						'				"checkCmds":[<br>' +
-						'					{ "cmd":"SetPlacemarkProperty","uid":"obj01" ,"templateName":"模板例子" ,"widgetName":"开关按钮" ,"property":"title" ,"value":"关" }<br>' +
+						'					{ "cmd":"SetPlacemarkProperty","uid":"obj01" ,"templateName":"Template" ,"widgetName":"SwitchButton" ,"property":"title" ,"value":"Close" }<br>' +
 						'				],<br>' +
 						'				"unCheckCmds":[<br>' +
-						'					{ "cmd":"SetPlacemarkProperty","uid":"obj01" ,"templateName":"模板例子" ,"widgetName":"开关按钮" ,"property":"title" ,"value":"开" }<br>' +
+						'					{ "cmd":"SetPlacemarkProperty","uid":"obj01" ,"templateName":"Template" ,"widgetName":"SwitchButton" ,"property":"title" ,"value":"开" }<br>' +
 						'				],	<br>' +
 						'				"cmdsImmediate":false<br>' +
 						'	        }<br>' +
@@ -295,10 +294,10 @@ var cmds = [
 
 	{
 		"cmd":"CopyPlacemarkTemplate",
-		"cmdDes":"使用已有的模板复制出一个新的",
+		"cmdDes":"Create new control by clone existing one",
 		"parameters":[
-			{ "parameter":"originName", "des":"要复制的模板名字" , "required":true },
-			{ "parameter":"newName", "des":"复制后新的模板名字", "required":true }
+			{ "parameter":"originName", "des":"The control to be cloned" , "required":true },
+			{ "parameter":"newName", "des":"Name of new control", "required":true }
 		],
 		"examples":[
 			{
@@ -306,8 +305,8 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "CopyPlacemarkTemplate", <br>' +
-						'	"originName":"温度显示牌", <br>' +
-						'	"newName":"电量显示牌" <br>' +
+						'	"originName":"Temperatureplacemark", <br>' +
+						'	"newName":"Powerplacemark" <br>' +
 						'}'	
 			}
 		]
@@ -315,9 +314,9 @@ var cmds = [
 	
 	{
 		"cmd":"DestroyPlacemarkTemplate",
-		"cmdDes":"删除指定模板",
+		"cmdDes":"Delete Control",
 		"parameters":[
-			{ "parameter":"name", "des":"指定要删除的模板名字" , "required":true }
+			{ "parameter":"name", "des":"Name of Control to be deleted" , "required":true }
 		],
 		"examples":[
 			{
@@ -325,7 +324,7 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "DestroyPlacemarkTemplate", <br>' +
-						'	"name":"温度显示牌" <br>' +
+						'	"name":"Temperatureplacemark" <br>' +
 						'}'	
 			}
 		]
@@ -333,12 +332,12 @@ var cmds = [
 	
 	{
 		"cmd":"SetPlacemarkTemplateConfig",
-		"cmdDes":"修改模板内部使用控件的属性设置。<br>	" +
-				"注：这个命令不影响已经使用这个模板创建的界面，要修改已经创建的界面，使用 SetPlacemarkProperty 命令。",
+		"cmdDes":"Modify Control configuration<br>	" +
+				"Note: this command will not modify look and feel of the control, to change control look and feel, please use command 'SetPlacemarkProperty'.",
 		"parameters":[
-			{ "parameter":"name", "des":"指定要修改的模板名字" , "required":true },
-			{ "parameter":"path", "des":"指定要修改哪个控件的哪个属性,中间使用'/'分割" , "required":true },
-			{ "parameter":"config", "des":"要修改的值" , "required":true }
+			{ "parameter":"name", "des":"name of the control" , "required":true },
+			{ "parameter":"path", "des":"list of properties to be modified, seperated by '/'" , "required":true },
+			{ "parameter":"config", "des":"target value" , "required":true }
 		],
 		"examples":[
 			{
@@ -346,8 +345,8 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SetPlacemarkTemplateConfig", <br>' +
-						'	"name":"监控面板",<br>' +
-						'	"path":"进度条2/styleConfig",<br>' +
+						'	"name":"MonitoringPanel",<br>' +
+						'	"path":"ProgressBar2/styleConfig",<br>' +
 						'	"config":{<br>' +
 						'		"0.25":[0.36,0.58,0.16],<br>' +
 						'		"0.50":[1,0.83,0.4],<br>' +
@@ -360,70 +359,67 @@ var cmds = [
 	},	
 	{
 		"cmd":"CreatePlacemark",
-		"cmdDes":"创建界面",
+		"cmdDes":"Placemark Creator",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"templateName", "des":"创建时使用的模板名字" , "required":true },
-			{ "parameter":"placemarkId", "des":"可以指定创建的界面的名字。<br>	" +
-					"注：如果通过ObjectCommand输入物体，标示界面是创建到物体身上，此时可以不输入placemarkId。那是系统会内置使用 '物体uid_模板名字'作为placemarkId" , "required":false },
-			{ "parameter":"type", "des":"指定界面是创建到3D里还是浮于屏幕上<br>	" +
-					"可设置选项：<br>	" +
-					"	Screen：标示这个界面是在屏幕坐标下创建的，大小不会随着摄影机远近而变化<br>	" +
-					"	Plane：标示这个界面是在3D坐标下创建的，大小会随着摄影机远近而变化" , "required":false, "default":"Screen" },
-//			{ "parameter":"worldSize", "des":"指定要删除的模板名字" , "required":true },
-//			{ "parameter":"track", "des":"指定要删除的模板名字" , "required":true },
-//			{ "parameter":"axis", "des":"指定要删除的模板名字" , "required":true },
-			{ "parameter":"scale", "des":"当type设置成Plane，界面在3D中显示时，默认的大小是使用模板里定义的像素点大小变成使用'米制'，这里通过scale来控制界面的大小" , "required":false, "default":[0.2, 0.2, 0.2] },			
-			{ "parameter":"presetPos", "des":"可以指定界面放置的位置。在type设置为Plane时，输入三维坐标， 在type设置为Screen时，输入二维坐标。<br>	" +
-					"注：如果没有指定位置，界面又是创建在物体上时，默认显示位置是物体的头顶" , "required":false },
-			{ "parameter":"posFromBuffer", "des":"同presetPos，通过buffer输入位置" , "required":false },
-			{ "parameter":"layoutOffset", "des":"当创建在物体上，默认显示位置是物体的头顶，这个参数可以再设定一个偏移量。在type设置为Plane时，输入三维坐标， 在type设置为Screen时，输入二维坐标。" , "required":false },
-			{ "parameter":"turnWhenNegative", "des":"输入位置的坐标是二维坐标时，如果坐标是负值：<br>	" +
-					"当turnWhenNegative设置成true，标示坐标是反方向计算的。比如[-0.1, -100],表示距屏幕右边10%,下面100像素点的位置。<br>	" +
-					"当turnWhenNegative设置成false，标示坐标是在屏幕外侧。比如[-0.1, -100],表示距屏幕左边-10%,上面-100像素点的位置,就是在屏幕外了。<br>	" , "required":false, "default":false },
-			{ "parameter":"countPerFrame", "des":"使用命令可以同时给多个物体创建头顶的界面，这个参数控制每帧可同时创建的数量，以优化显示。当设为0时，标示一次创建所有的界面，如果数量很多可能会卡死一段时间。" , "required":false, "default":0   },
-			{ "parameter":"additiveDataObjects", "des":"当界面创建在物体上，物体作为宿主可以给界面提供数据。但当界面需要多个物体数据源，或者界面是个二维屏幕界面，没有创建在物体上，有需要物体提供数据时，可以通过这个参数控制物体数据的来源。<br>	" +
-					"使用键值对可输入多个数据源，键用于模板里引用属性路径，值可以输入字符或者buffer，字符代表物体的id或者uid，所有如果输入buffer，不能使用字符代表Buffer的简写方式。" , "required":false },			
-			{ "parameter":"updateTime", "des":"界面上如果连接了物体显示实时数据，这个参数控制界面刷新数据的时间间隔，单位是秒" , "required":false, "default":1 }
+			{ "parameter":"templateName", "des":"name of the placemark template" , "required":true },
+			{ "parameter":"placemarkId", "des":"name of the placemark<br>	" +
+					"Note: if placemark is created on the surface of object, placemarkId can be ignored. system will generate placemakrkId automatically using name conversion: {Object uid}_{Template Name}" , "required":false },
+			{ "parameter":"type", "des":"coordinate type of UI<br>	" +
+					"can of one of:<br>	" +
+					"	Screen：Placemark is created under screen coordinate, so it will not change during camera zoom in/zoom out<br>	" +
+					"	Plane：Placemark is created under 3D coordinate, so it could changes sizes with movement of camera" , "required":false, "default":"Screen" },
+			{ "parameter":"scale", "des":" placemark scale, used to control sizes of placemark" , "required":false, "default":[0.2, 0.2, 0.2] },			
+			{ "parameter":"presetPos", "des":"placemark position. if placemark type is 'Plane', use (x,y,z) as coordinate, if placemark type is 'screen'， use (x,y) as coordinate.<br>	" +
+					"Note: if 'presetPos' is not specified, and placemark is created against object, the placemark is located on the top of the object by default." , "required":false },
+			{ "parameter":"posFromBuffer", "des":"same as presetPos，set placemark position by buffer" , "required":false },
+			{ "parameter":"layoutOffset", "des":"offset from target object, if placemark type is 'Plane', use (x,y,z) as coordinate, if placemark type is 'screen'， use (x,y) as coordinate." , "required":false },
+			{ "parameter":"turnWhenNegative", "des":"apply to (x,y) coordinate<br>	" +
+					"if turnWhenNegative=true，coordinate is calculated as opposite, for instance, [-0.1, -100] point to position with right 10%, 100 pixels below<br>	" +
+					"if turnWhenNegative=false，coordinate is located outside the screen. for instance, [-0.1, -100]point to position left -10%, up -100 pixels<br>	" , "required":false, "default":false },
+			{ "parameter":"countPerFrame", "des":"number of placemark object can be shown simultaneously" , "required":false, "default":0   },
+			{ "parameter":"additiveDataObjects", "des":"While placemark is created against object, target object be used as data source. If placemark need multiple data source , or not created against object, this parameter can be used to specifiy data source <br>	" +
+					"can be key-value, id, uid or buffer" , "required":false },			
+			{ "parameter":"updateTime", "des":"data refresh interval in seconds, if placemark is linked to external data source" , "required":false, "default":1 }
 			
 		],
 		"examples":[
 			{
-				"name":"给一个物体创建监控面板,没有输入placemarkId",
+				"name":"Create a monitoring panel to an object without placemarkId",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "CreatePlacemark", <br>' +
 						'	"uid":"senser01", <br>' +
 						'	"type":"Plane", <br>' +						
-						'	"templateName":"温湿度显示模板", <br>' +
+						'	"templateName":"T&H Template", <br>' +
 						'	"layoutOffset":[0,1,0],<br>' +
 						'	"scale":[0.1,0.1,0.1]<br>' +
 						'}'	
 			},
 			{
-				"name":"同时给多个物体创建监控面板，因为是多个物体同时创建，这时也就不能输入placemarkId",
+				"name":"Create monitoring panel to multiple objects",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "CreatePlacemark", <br>' +
 						'	"fromBuffer":"allSenser", <br>' +
 						'	"type":"Screen", <br>' +						
-						'	"templateName":"温湿度显示模板", <br>' +
+						'	"templateName":"T&H Panel", <br>' +
 						'	"layoutOffset":[0,50],<br>' +
 						'	"countPerFrame":5<br>' +
 						'}'	
 			},	
 			{
-				"name":"创建一个2D界面，同时输入多个数据源",
+				"name":"Create 2D placemark with multiple data source",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "CreatePlacemark", <br>' +
-						'	"placemarkId":"监控显示面板01", <br>' +
+						'	"placemarkId":"Monitor01", <br>' +
 						'	"type":"Screen", <br>' +						
-						'	"templateName":"监控显示面板模板", <br>' +
+						'	"templateName":"MonitorPanel", <br>' +
 						'	"presetPos":[0.5,50],<br>' +
 						'	"additiveDataObjects":{<br>' +
-						'		"数据源物体1": "obj01" , //输入字符串代表物体的id或者uid<br>' +
-						'		"数据源物体2": {"ObjectManager": "RunBuffer/obj02"} //通过buffer输入这个数据源，但不能使用字符串的buffer简写方式<br>' +
+						'		"ds1": "obj01" , //object id or uid<br>' +
+						'		"ds2": {"ObjectManager": "RunBuffer/obj02"} //use buffer as data source<br>' +
 						'	} <br>' +
 						'}'	
 			}				
@@ -431,47 +427,47 @@ var cmds = [
 	},		
 	{
 		"cmd":"DestroyPlacemark",
-		"cmdDes":"删除指定界面",
+		"cmdDes":"Destroy Placemark",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"placemarkId", "des":"创建时设置了placemarkId，这里需要输入placemarkId" , "required":false },
-			{ "parameter":"templateName", "des":"创建时没有设置placemarkId，系统会内置使用 '物体uid_模板名字'作为placemarkId，所有使用这种方法创建时，需要传入templateName" , "required":false }
+			{ "parameter":"placemarkId", "des":"placemarkId" , "required":false },
+			{ "parameter":"templateName", "des":"if no placemarkId is specified while placemark is created, use   'object uid_template name' as placemarkId，so templateName is need to delete placemark" , "required":false }
 			
 		],
 		"examples":[
 			{
-				"name":"创建时没有输入placemarkId，这里需要输入物体和templateName",
+				"name":"use object id and template name to destroy placemark",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "DestroyPlacemark", <br>' +
 						'	"uid":"obj01", <br>' +
-						'	"templateName":"温湿度显示模板"<br>' +
+						'	"templateName":"T&H Panel"<br>' +
 						'}'	
 			},
 			{
-				"name":"同时控制多个物体时，在创建时无法输入placemarkId，销毁时就要传入templateName",
+				"name":"use templateName to bulk delete placemark",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "DestroyPlacemark", <br>' +
 						'	"fromBuffer":"allSenser", <br>' +
-						'	"templateName":"温湿度显示模板"<br>' +
+						'	"templateName":"T&H Panel Template"<br>' +
 						'}'	
 			},
 			{
-				"name":"创建是指定了placemarkId，这里可以使用placemarkId指定销毁哪个界面",
+				"name":"use placemarkId to delete placemark",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "DestroyPlacemark", <br>' +
-						'	"placemarkId":"监控显示面板01" <br>' +
+						'	"placemarkId":"TH01" <br>' +
 						'}'	
 			}			
 		]
 	},
 	{
 		"cmd":"GetLastClickedButtonPlacemarkHost",
-		"cmdDes":"和GetLastEventObj和GetLastMonitorRespondObj类似，在界面上点击button后，在后面的需要知道点击这个button的界面的物体宿主是谁。",
+		"cmdDes":"Simular to GetLastEventObj and GetLastMonitorRespondObj，click on placemark will return object reference",
 		"parameters":[
-			{ "parameter":"toBuffer", "des":"设置物体宿主存放的buffer" , "required":true }
+			{ "parameter":"toBuffer", "des":"buffer which store the object" , "required":true }
 		],
 		"examples":[
 			{
@@ -486,42 +482,41 @@ var cmds = [
 	},	
 	{
 		"cmd":"SetPlacemarkProperty",
-		"cmdDes":"修改已经创建的界面属性",
+		"cmdDes":"Modify property of existing placemark",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"placemarkId", "des":"创建时设置了placemarkId，这里需要输入placemarkId" , "required":false },
-			{ "parameter":"templateName", "des":"创建时没有设置placemarkId，系统会内置使用 '物体uid_模板名字'作为placemarkId，所有使用这种方法创建时，需要传入templateName" , "required":false },
-			{ "parameter":"widgetName", "des":"要控制的控件的名字" , "required":true },
-			{ "parameter":"property", "des":"要设置的控件的属性名" , "required":true },
-			{ "parameter":"value", "des":"要修改的值<br>	" +
-					"注：模模搭内部开发是使用强数据类型语言，SetPlacemarkProperty这个命令是通用命令，不同的物体的不同属性需要不同的数据类型，这里填写数据不像在命令里那样符合json标准就行了，有的要表示数据类型。<br>	" +
-					"属性的值如果是字符串，数字，布尔可以正常填写。<br>	" +
-					"如果是 vector3，color等这种数据，不能简单使用数组，要写成下面的形式<br>	" +
+			{ "parameter":"placemarkId", "des":"must specify placemarkId if placemark is created with placemarkId" , "required":false },
+			{ "parameter":"templateName", "des":"templateName, note that if placemark is created without placemarkId, system will use {object_uid}_{template name} as placemarkId" , "required":false },
+			{ "parameter":"widgetName", "des":"control name" , "required":true },
+			{ "parameter":"property", "des":"control property name" , "required":true },
+			{ "parameter":"value", "des":"value to be modified<br>	" +
+					"Note: system use strong type internally. String, number or boolean can be used as normal, for other data type, the name of data type need to be specified.<br>	" +
+					"for instance, vector3，color should be wrote as<br>	" +
 					"{\"Vector3\":[1,0,0]}<br>	" +
 					"{\"Vector2\":[1,0]}<br>	" +
 					"{\"Color\":[1,0,0,1]}<br>	", "required":true}
 		],
 		"examples":[
 			{
-				"name":"属性的值如果是字符串，数字，布尔可以正常填写",
+				"name":"String, number or boolean used as normal",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SetPlacemarkProperty", <br>' +
 						'	"uid":"obj01", <br>' +
-						'	"templateName":"温湿度显示模板", <br>' +
-						'	"widgetName":"状态", <br>' +
+						'	"templateName":"T&H Panel", <br>' +
+						'	"widgetName":"Status", <br>' +
 						'	"property":"text", <br>' +
-						'	"value":"正常" <br>' +
+						'	"value":"Normal" <br>' +
 						'}'	
 			},		
 			{
-				"name":"如果是 vector3，color等这种数据，不能简单使用数组，需要标示数据类型",
+				"name":"need to specify data type if data type is vector3，color, etc.",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SetPlacemarkProperty", <br>' +
 						'	"uid":"obj01", <br>' +
-						'	"templateName":"温湿度显示模板", <br>' +
-						'	"widgetName":"进度条2", <br>' +
+						'	"templateName":"T&H Panel", <br>' +
+						'	"widgetName":"Progressbar2", <br>' +
 						'	"property":"Color", <br>' +
 						'	"value":{"Color":[1,0,0]} <br>' +
 						'}'	
@@ -531,15 +526,15 @@ var cmds = [
 
 	{
 		"cmd":"CreateLayerPanel",
-		"cmdDes":"模模搭内置一个简易的功能面板,可设定多个功能组，每个组也可设置多个功能",
+		"cmdDes":"A build-in, easy to use, multi-function Panel provided by system",
 		"parameters":[
-			{ "parameter":"config", "des":"配置图层有哪些选项" , "required":true },
-			{ "parameter":"presetPos", "des":"可以指定界面放置的位置，输入二维坐标。<br>	" +
-					"注：如果没有指定位置，界面又是创建在物体上时，默认显示位置是物体的头顶" , "required":false },
-			{ "parameter":"posFromBuffer", "des":"同presetPos，通过buffer输入位置" , "required":false },
-			{ "parameter":"turnWhenNegative", "des":"输入位置的坐标是二维坐标时，如果坐标是负值：<br>	" +
-					"当turnWhenNegative设置成true，标示坐标是反方向计算的。比如[-0.1, -100],表示距屏幕右边10%,下面100像素点的位置。<br>	" +
-					"当turnWhenNegative设置成false，标示坐标是在屏幕外侧。比如[-0.1, -100],表示距屏幕左边-10%,上面-100像素点的位置,就是在屏幕外了。<br>	" , "required":false, "default":false }
+			{ "parameter":"config", "des":"option list" , "required":true },
+			{ "parameter":"presetPos", "des":"position, use (x,y) as coordinate<br>	" +
+					"Note: default position is on top of object." , "required":false },
+			{ "parameter":"posFromBuffer", "des":"same as presetPos，set position from buffer" , "required":false },
+			{ "parameter":"turnWhenNegative", "des":"apply to (x,y) coordinate<br>	" +
+					"if turnWhenNegative=true，coordinate is calculated as opposite, for instance, [-0.1, -100] point to position with right 10%, 100 pixels below<br>	" +
+					"if turnWhenNegative=false，coordinate is located outside the screen. for instance, [-0.1, -100]point to position left -10%, up -100 pixels<br>	" , "required":false, "default":false }
 			
 		],
 		"examples":[
@@ -551,55 +546,54 @@ var cmds = [
 						'	"presetPos":[-100, 0.5],<br>' +
 						'	"turnWhenNegative":true,<br>' +
 						'	"config":{<br>' +
-						//'		"drawPos":[-100, 0.5],<br>' +
-						//'		"turnWhenNegative":true,<br>// 详见CreatePlacemark命令里针对turnWhenNegative的解释' +
-						'		//设置面板整体的大小<br>' +						
+						
+						'		//set panel size<br>' +						
 						'		"bgWidth": 150,<br>' +
 						'		"bgHeight": 330,<br><br>' +
-						'		//设置界面整体轴心点位置<br>' +
-						'		"horizontalAlignment":"LEFT",	// 水平方向上轴心点的位置，可填写 LEFT CENTER RIGHT<br>' +
-						'		"verticalAlignment":"CENTER",	// 垂直方向上轴心点的位置,可填写 TOP CENTER BOTTOM<br><br>' +
-						'		//可以创建多个功能分组,界面会列出多列<br>' +						
+						'		//panel axis position<br>' +
+						'		"horizontalAlignment":"LEFT",	// horizontal position, can be one of  LEFT CENTER RIGHT<br>' +
+						'		"verticalAlignment":"CENTER",	// vertical position, can be one of TOP CENTER BOTTOM<br><br>' +
+						'		//function groups<br>' +						
 						'		"groups":[<br>' +	
 						'			{<br>' +	
-						'				"name":"基础功能",<br>' +	
-						'				"icon":"userimage/3534/CustomTexture/20150708325991.png", //组可以设定一个图标<br>' +	
-						'				"textConfig":{	//这里针对字的设置参数,界面模板针对text设置参数兼容<br>' +
+						'				"name":"basic function",<br>' +	
+						'				"icon":"userimage/3534/CustomTexture/20150708325991.png", //icon path<br>' +	
+						'				"textConfig":{	//set text<br>' +
 						'					"fontFamily": "Arial",<br>' +
 						'					"fontSize": 18,<br>' +
 						'					"drawSize": [100,38],<br>' +
 						'					"verticalTextAlignment": "CENTER",<br>' +
 						'					"fontColor": [1,1,1,1] <br>' +
 						'				},<br><br>' +
-						'				//每组下可创建多个功能项<br>' +
+						'				//multiable functions inside one function group<br>' +
 						'				"items":[<br>' +
 						'					{<br>' +
-						'						 "name":"仓库编号",<br>' +
+						'						 "name":"warehouse_index",<br>' +
 						'						 "textConfig":{	<br>' +	
 						'							 "fontFamily": "Arial",<br>' +
 						'							 "fontSize": 14,<br>' +
 						'							 "fontColor": [0,0,0,1]<br>' +
 						'						 },<br>' +
-						'						 "initCmds":[ //一创建就执行的命令<br>' +
-						'							{ "cmd":"ChangeLayerPanelItems","items":["仓库编号"],"state":true } //设置这个功能项为勾选状态<br>' +
+						'						 "initCmds":[ //run command after creation<br>' +
+						'							{ "cmd":"ChangeLayerPanelItems","items":["warehouse_index"],"state":true } //set status as checked<br>' +
 						'						 ],<br>' +
-						'						 "checkCmds":[ //这个功能项被勾选时要执行的命令<br>' +
-						'							{ "cmd":"ChangeLayerPanelItems","items":["温度监控","湿度监控"],"state":false }, //取消其他功能项的勾选状态,可实现多功能项间的互斥功能<br>' +
-						'							{ "cmd":"CreatePlacemark", "fromBuffer":{"ObjectManager": "RunBuffer/粮仓"}, "templateName" : "仓库编号", "type":"screen", "countPerFrame":100000}	<br>' +	
+						'						 "checkCmds":[ //run command if checked<br>' +
+						'							{ "cmd":"ChangeLayerPanelItems","items":["TemperatureControl","humidityControl"],"state":false }, //uncheck other items<br>' +
+						'							{ "cmd":"CreatePlacemark", "fromBuffer":{"ObjectManager": "RunBuffer/warehouse"}, "templateName" : "warehouse_index", "type":"screen", "countPerFrame":100000}	<br>' +	
 						'						 ],<br>' +
-						'						 "unCheckCmds":[ //这个功能项切换成不勾选状态时要执行的命令<br>' +
-						'							{ "cmd":"DestroyPlacemark", "fromBuffer":{"ObjectManager": "RunBuffer/粮仓"}, "templateName" : "仓库编号"}<br>' +
+						'						 "unCheckCmds":[ //run command if unchecked<br>' +
+						'							{ "cmd":"DestroyPlacemark", "fromBuffer":{"ObjectManager": "RunBuffer/warehouse"}, "templateName" : "warehouse_index"}<br>' +
 						'						 ]<br>' +
 						'					 },<br>' +
 						'					{<br>' +
-						'						 "name":"温度监控",<br>' +
+						'						 "name":"temperature monitoring",<br>' +
 						'						......<br>' +
 						'					},<br>' +
 						'					......<br>' +
 						'				]<br>' +
 						'			},<br>' +
 						'			{<br>' +
-						'				"name":"高级功能",<br>' +
+						'				"name":"advance settings",<br>' +
 						'				......<br>' +
 						'			},<br>' +
 						'			......<br>' +
@@ -612,7 +606,7 @@ var cmds = [
 	
 	{
 		"cmd":"DestroyLayerPanel",
-		"cmdDes":"删除功能面板",
+		"cmdDes":"Destroy Layer Panel",
 		"parameters":[
 		],
 		"examples":[
@@ -628,10 +622,10 @@ var cmds = [
 	
 	{
 		"cmd":"ChangeLayerPanelItems",
-		"cmdDes":"设置功能面板里功能项的勾选状态",
+		"cmdDes":"Check or uncheck panel item",
 		"parameters":[
-			{ "parameter":"items", "des":"通过数组可同时控制多个功能项" , "required":true },
-			{ "parameter":"state", "des":"输入true或false，指定是否是勾选状态" , "required":true }
+			{ "parameter":"items", "des":"set check status by array" , "required":true },
+			{ "parameter":"state", "des":"true means check, false means uncheck" , "required":true }
 		],
 		"examples":[
 			{
@@ -639,7 +633,7 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "ChangeLayerPanelItems", <br>' +
-						'	"items":["温度监控","用电监控"], <br>' +
+						'	"items":["Temperature Monitoring","Power Monitoring"], <br>' +
 						'	"state":true <br>' +
 						'}'	
 			}
@@ -808,5 +802,5 @@ var cmds = [
 	
 ]
 
-docCreator.addDocItemFromData("界面", cmds)
+docCreator.addDocItemFromData("UI", cmds)
 
