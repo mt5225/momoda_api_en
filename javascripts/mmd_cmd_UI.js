@@ -362,8 +362,8 @@ var cmds = [
 		"cmdDes":"Placemark Creator",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"templateName", "des":"name of the placemark template" , "required":true },
-			{ "parameter":"placemarkId", "des":"name of the placemark<br>	" +
+			{ "parameter":"templateName", "des":"Name of the placemark template" , "required":true },
+			{ "parameter":"placemarkId", "des":"Name of the placemark<br>	" +
 					"Note: if placemark is created on the surface of object, placemarkId can be ignored. system will generate placemakrkId automatically using name conversion: {Object uid}_{Template Name}" , "required":false },
 			{ "parameter":"type", "des":"coordinate type of UI<br>	" +
 					"can of one of:<br>	" +
@@ -372,15 +372,15 @@ var cmds = [
 			{ "parameter":"scale", "des":" placemark scale, used to control sizes of placemark" , "required":false, "default":[0.2, 0.2, 0.2] },			
 			{ "parameter":"presetPos", "des":"placemark position. if placemark type is 'Plane', use (x,y,z) as coordinate, if placemark type is 'screen'， use (x,y) as coordinate.<br>	" +
 					"Note: if 'presetPos' is not specified, and placemark is created against object, the placemark is located on the top of the object by default." , "required":false },
-			{ "parameter":"posFromBuffer", "des":"same as presetPos，set placemark position by buffer" , "required":false },
+			{ "parameter":"posFromBuffer", "des":"Same as presetPos，set placemark position by buffer" , "required":false },
 			{ "parameter":"layoutOffset", "des":"offset from target object, if placemark type is 'Plane', use (x,y,z) as coordinate, if placemark type is 'screen'， use (x,y) as coordinate." , "required":false },
-			{ "parameter":"turnWhenNegative", "des":"apply to (x,y) coordinate<br>	" +
+			{ "parameter":"turnWhenNegative", "des":"Apply to (x,y) coordinate<br>	" +
 					"if turnWhenNegative=true，coordinate is calculated as opposite, for instance, [-0.1, -100] point to position with right 10%, 100 pixels below<br>	" +
 					"if turnWhenNegative=false，coordinate is located outside the screen. for instance, [-0.1, -100]point to position left -10%, up -100 pixels<br>	" , "required":false, "default":false },
-			{ "parameter":"countPerFrame", "des":"number of placemark object can be shown simultaneously" , "required":false, "default":0   },
+			{ "parameter":"countPerFrame", "des":"Number of placemark object can be shown simultaneously" , "required":false, "default":0   },
 			{ "parameter":"additiveDataObjects", "des":"While placemark is created against object, target object be used as data source. If placemark need multiple data source , or not created against object, this parameter can be used to specifiy data source <br>	" +
 					"can be key-value, id, uid or buffer" , "required":false },			
-			{ "parameter":"updateTime", "des":"data refresh interval in seconds, if placemark is linked to external data source" , "required":false, "default":1 }
+			{ "parameter":"updateTime", "des":"Data refresh interval in seconds, if placemark is linked to external data source" , "required":false, "default":1 }
 			
 		],
 		"examples":[
@@ -431,7 +431,7 @@ var cmds = [
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
 			{ "parameter":"placemarkId", "des":"placemarkId" , "required":false },
-			{ "parameter":"templateName", "des":"if no placemarkId is specified while placemark is created, use   'object uid_template name' as placemarkId，so templateName is need to delete placemark" , "required":false }
+			{ "parameter":"templateName", "des":"If no placemarkId is specified while placemark is created, use   'object uid_template name' as placemarkId，so templateName is need to delete placemark" , "required":false }
 			
 		],
 		"examples":[
@@ -485,10 +485,10 @@ var cmds = [
 		"cmdDes":"Modify property of existing placemark",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"placemarkId", "des":"must specify placemarkId if placemark is created with placemarkId" , "required":false },
-			{ "parameter":"templateName", "des":"templateName, note that if placemark is created without placemarkId, system will use {object_uid}_{template name} as placemarkId" , "required":false },
+			{ "parameter":"placemarkId", "des":"Must specify placemarkId if placemark is created with placemarkId" , "required":false },
+			{ "parameter":"templateName", "des":"TemplateName, note that if placemark is created without placemarkId, system will use {object_uid}_{template name} as placemarkId" , "required":false },
 			{ "parameter":"widgetName", "des":"control name" , "required":true },
-			{ "parameter":"property", "des":"control property name" , "required":true },
+			{ "parameter":"property", "des":"Control property name" , "required":true },
 			{ "parameter":"value", "des":"value to be modified<br>	" +
 					"Note: system use strong type internally. String, number or boolean can be used as normal, for other data type, the name of data type need to be specified.<br>	" +
 					"for instance, vector3，color should be wrote as<br>	" +
@@ -528,11 +528,11 @@ var cmds = [
 		"cmd":"CreateLayerPanel",
 		"cmdDes":"A build-in, easy to use, multi-function Panel provided by system",
 		"parameters":[
-			{ "parameter":"config", "des":"option list" , "required":true },
-			{ "parameter":"presetPos", "des":"position, use (x,y) as coordinate<br>	" +
+			{ "parameter":"config", "des":"Option list" , "required":true },
+			{ "parameter":"presetPos", "des":"Position, use (x,y) as coordinate<br>	" +
 					"Note: default position is on top of object." , "required":false },
 			{ "parameter":"posFromBuffer", "des":"same as presetPos，set position from buffer" , "required":false },
-			{ "parameter":"turnWhenNegative", "des":"apply to (x,y) coordinate<br>	" +
+			{ "parameter":"turnWhenNegative", "des":"Apply to (x,y) coordinate<br>	" +
 					"if turnWhenNegative=true，coordinate is calculated as opposite, for instance, [-0.1, -100] point to position with right 10%, 100 pixels below<br>	" +
 					"if turnWhenNegative=false，coordinate is located outside the screen. for instance, [-0.1, -100]point to position left -10%, up -100 pixels<br>	" , "required":false, "default":false }
 			
@@ -624,7 +624,7 @@ var cmds = [
 		"cmd":"ChangeLayerPanelItems",
 		"cmdDes":"Check or uncheck panel item",
 		"parameters":[
-			{ "parameter":"items", "des":"set check status by array" , "required":true },
+			{ "parameter":"items", "des":"Set check status by array" , "required":true },
 			{ "parameter":"state", "des":"true means check, false means uncheck" , "required":true }
 		],
 		"examples":[
@@ -642,9 +642,9 @@ var cmds = [
 	
 	{
 		"cmd":"ShowLayerPanel",
-		"cmdDes":"设置是否显示功能面板",
+		"cmdDes":"Show or hide Panel",
 		"parameters":[			
-			{ "parameter":"enable", "des":"指定要删除的模板名字" , "required":true }
+			{ "parameter":"enable", "des":"panel name" , "required":true }
 		],
 		"examples":[
 			{
@@ -652,7 +652,7 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "ChangeLayerPanelItems", <br>' +
-						'	"items":["温度监控","用电监控"], <br>' +
+						'	"items":["temperature monitoring","power monitoring"], <br>' +
 						'	"enable":true <br>' +
 						'}'	
 			}
@@ -660,7 +660,7 @@ var cmds = [
 	},	
 	{
 		"cmd":"ShowHideLayerPanel",
-		"cmdDes":"功能面板在显示和不显示间切换",
+		"cmdDes":"Show or hide panel",
 		"parameters":[
 		],
 		"examples":[
@@ -677,16 +677,16 @@ var cmds = [
 
 	{
 		"cmd":"ShowPropListPanel",
-		"cmdDes":"模模搭内置一个简易的物体属性面板，输入一个物体，显示这个物体的属性。同时,面板同时可以配置多个功能按钮。",
+		"cmdDes":"A build-in, easy to use 'object property panel', can be also used to config function buttons.",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[
-			{ "parameter":"config", "des":"可以配置多个功能按钮" , "required":true },
-			{ "parameter":"presetPos", "des":"可以指定界面放置的位置，输入二维坐标。<br>	" +
-					"注：如果没有指定位置，界面又是创建在物体上时，默认显示位置是物体的头顶" , "required":false },
-			{ "parameter":"posFromBuffer", "des":"同presetPos，通过buffer输入位置" , "required":false },
-			{ "parameter":"turnWhenNegative", "des":"输入位置的坐标是二维坐标时，如果坐标是负值：<br>	" +
-					"当turnWhenNegative设置成true，标示坐标是反方向计算的。比如[-0.1, -100],表示距屏幕右边10%,下面100像素点的位置。<br>	" +
-					"当turnWhenNegative设置成false，标示坐标是在屏幕外侧。比如[-0.1, -100],表示距屏幕左边-10%,上面-100像素点的位置,就是在屏幕外了。<br>	" , "required":false, "default":false }
+			{ "parameter":"config", "des":"Can be assign many function buttons" , "required":true },
+			{ "parameter":"presetPos", "des":"Panel position, use (x,y) as coordinate.<br>	" +
+					"Note: default position is on top of object" , "required":false },
+			{ "parameter":"posFromBuffer", "des":"same as presetPos，set " , "required":false },
+			{ "parameter":"turnWhenNegative", "des":"Apply to (x,y) coordinate<br>	" +
+					"if turnWhenNegative=true，coordinate is calculated as opposite, for instance, [-0.1, -100] point to position with right 10%, 100 pixels below<br>	" +
+					"if turnWhenNegative=false，coordinate is located outside the screen. for instance, [-0.1, -100]point to position left -10%, up -100 pixels<br>	" , "required":false, "default":false }
 		],
 		"examples":[
 			{
@@ -698,43 +698,43 @@ var cmds = [
 						'	"presetPos":[100, 0.5],<br>' +
 						'	"turnWhenNegative":true,<br>' +				
 						'	"config":{ <br>' +
-						'		"initCmds":[ //一创建就执行的命令<br>' +
+						'		"initCmds":[ //run command after creation<br>' +
 						'			{ "cmd":"CopyBuffer",  "fromBuffer":{"ObjectManager":"RunBuffer/lastEventObj"}, "toBuffer":{"ObjectManager":"RunBuffer/curShowPanelObj"}} ,<br>' +
-						'			{ "cmd":"ChangePropListPanelItems", "items":["基本信息"], "state":true, "exeCommands":true } //设置初始化时哪个按钮是被点击的<br>' +
+						'			{ "cmd":"ChangePropListPanelItems", "items":["basicInfo"], "state":true, "exeCommands":true } //set which button is clicked after creation<br>' +
 						'		],<br>' +
 						'		"items":[<br>' +
 						'			{<br>' +
-						'				"name":"基本信息",<br>' +
-						'				"normalColor":[0.415,0.839,0.462,1],//正常的颜色<br>' +
-						'				"highlightedColor":[0.337,0.666,0.372,1], //鼠标放上去的颜色<br>' +
-						'				"pressedColor":[0.415,0.839,0.462,1], //鼠标按下的颜色<br>' +
+						'				"name":"basicInfo",<br>' +
+						'				"normalColor":[0.415,0.839,0.462,1],//color on normal status<br>' +
+						'				"highlightedColor":[0.337,0.666,0.372,1], //color on mouse over<br>' +
+						'				"pressedColor":[0.415,0.839,0.462,1], //color on mouse click<br>' +
 						'				"clickCmds":[<br>' +
-						'					{ "cmd": "ChangePropListPanelItems", "items":["粮情信息","报警信息"], "state":false, "exeCommands":false},//取消其他功能项的点击状态,可实现多功能项间的互斥功能<br>' +
-						'					{ "cmd": "GetValue", "fromBuffer":{"ObjectManager":"RunBuffer/curShowPanelObj"}, "path":"MonitorDatas/RealTimeData", "toBuffer":{"ObjectManager":"RunBuffer/面板显示数据"}},<br>' +	
-						'					{ "cmd": "SetPropListPanelKeyValue", "valueBuffer":{"ObjectManager":"RunBuffer/面板显示数据"} ,"names":["仓号","品种","库存数量","保管员","入库时间","用电量","单仓核算"]}<br>' +
+						'					{ "cmd": "ChangePropListPanelItems", "items":["warehouseInfo","alarmInfo"], "state":false, "exeCommands":false},//uncheck other function button.<br>' +
+						'					{ "cmd": "GetValue", "fromBuffer":{"ObjectManager":"RunBuffer/curShowPanelObj"}, "path":"MonitorDatas/RealTimeData", "toBuffer":{"ObjectManager":"RunBuffer/panelData"}},<br>' +	
+						'					{ "cmd": "SetPropListPanelKeyValue", "valueBuffer":{"ObjectManager":"RunBuffer/panelData"} ,"names":["warehouse_index","Catelog","Qualtity","Manager","UpdateTime","Power Consumption","CheckNumber"]}<br>' +
 						'				]<br>' +
 						'			},<br>' +
 						'			{<br>' +
-						'				"name":"粮情信息",<br>' +
+						'				"name":"Warehouse Info",<br>' +
 						'				"clickCmds":[<br>' +
-						'					{ "cmd": "ChangePropListPanelItems", "items":["基本信息","报警信息"], "state":false, "exeCommands":false},<br>' +
-						'					{ "cmd": "GetValue", "fromBuffer":{"ObjectManager":"RunBuffer/curShowPanelObj"}, "path":"MonitorDatas/RealTimeData", "toBuffer":{"ObjectManager":"RunBuffer/面板显示数据"}},<br>' +	
-						'					{ "cmd": "SetPropListPanelKeyValue", "valueBuffer":{"ObjectManager":"RunBuffer/面板显示数据"} ,"names":["仓房温度","粮食温度","          上","          中上","          中下","          下","平均温度","湿度","虫害"]}<br>' +
+						'					{ "cmd": "ChangePropListPanelItems", "items":["basicInfo","alarmInfo"], "state":false, "exeCommands":false},<br>' +
+						'					{ "cmd": "GetValue", "fromBuffer":{"ObjectManager":"RunBuffer/curShowPanelObj"}, "path":"MonitorDatas/RealTimeData", "toBuffer":{"ObjectManager":"RunBuffer/panelData"}},<br>' +	
+						'					{ "cmd": "SetPropListPanelKeyValue", "valueBuffer":{"ObjectManager":"RunBuffer/panelData"} ,"names":["Temperature","WarehouseTemperature","          Up","          MiddleUp","          MiddleDown","          Down","AvgTemperature","Humidity","InsectControl"]}<br>' +
 						'				]<br>' +
 						'			},<br>' +
 						'			{<br>' +
-						'				"name":"报警信息",<br>' +
+						'				"name":"alarmInfo",<br>' +
 						'				"clickCmds":[<br>' +
-						'					{ "cmd": "ChangePropListPanelItems", "items":["基本信息","粮情信息"], "state":"unclicked", "exeCommands":false},<br>' +
-						'					{ "cmd": "GetValue", "fromBuffer":{"ObjectManager":"RunBuffer/curShowPanelObj"}, "path":"MonitorDatas/RealTimeData", "toBuffer":{"ObjectManager":"RunBuffer/面板显示数据"}},<br>' +	
-						'					{ "cmd": "SetPropListPanelKeyValue", "valueBuffer":{"ObjectManager":"RunBuffer/面板显示数据"} ,"names":["温度","火灾","虫害"]}<br>' +
+						'					{ "cmd": "ChangePropListPanelItems", "items":["basicInfo","warehouseInfo"], "state":"unclicked", "exeCommands":false},<br>' +
+						'					{ "cmd": "GetValue", "fromBuffer":{"ObjectManager":"RunBuffer/curShowPanelObj"}, "path":"MonitorDatas/RealTimeData", "toBuffer":{"ObjectManager":"RunBuffer/panelData"}},<br>' +	
+						'					{ "cmd": "SetPropListPanelKeyValue", "valueBuffer":{"ObjectManager":"RunBuffer/panelData"} ,"names":["Temperature","Fire","InsectControl"]}<br>' +
 						'				]<br>' +
 						'			},<br>' +
 						'			{<br>' +
-						'				"name":"二维码",<br>' +
+						'				"name":"Barcode",<br>' +
 						'				"clickCmds":[<br>' +
-						'					{ "cmd": "GetValue", "fromBuffer":{"ObjectManager":"RunBuffer/curShowPanelObj"}, "path":"MonitorDatas/RealTimeData/二维码url", "toBuffer":{"ObjectManager":"RunBuffer/二维码url"}},<br>' +
-						'					{ "cmd": "UrlWindow" ,"urlBuffer":{"ObjectManager":"RunBuffer/二维码url"} ,"title":"二维码", "width":"250" , "height":"250"}<br>' +
+						'					{ "cmd": "GetValue", "fromBuffer":{"ObjectManager":"RunBuffer/curShowPanelObj"}, "path":"MonitorDatas/RealTimeData/barcode_url", "toBuffer":{"ObjectManager":"RunBuffer/barcode_url"}},<br>' +
+						'					{ "cmd": "UrlWindow" ,"urlBuffer":{"ObjectManager":"RunBuffer/barcode_url"} ,"title":"Barcode", "width":"250" , "height":"250"}<br>' +
 						'				]<br>' +
 						'			}<br>' +
 						'		]<br>' +
@@ -745,7 +745,7 @@ var cmds = [
 	},
 	{
 		"cmd":"HidePropListPanel",
-		"cmdDes":"隐藏物体面板",
+		"cmdDes":"Hide property list panel",
 		"parameters":[
 		],
 		"examples":[
@@ -761,11 +761,11 @@ var cmds = [
 	
 	{
 		"cmd":"ChangePropListPanelItems",
-		"cmdDes":"设置物体面板里按钮的点击状态",
+		"cmdDes":"Change panel button status",
 		"parameters":[
-			{ "parameter":"items", "des":"通过数组可同时控制多个按钮项" , "required":true },
-			{ "parameter":"state", "des":"输入true或false，指定是否是点击状态" , "required":true },
-			{ "parameter":"exeCommands", "des":"设置状态为true时,是否运行命令" , "required":false, "default":false },
+			{ "parameter":"items", "des":"Array to set button status in bulk" , "required":true },
+			{ "parameter":"state", "des":"ture means clicked, false means unclicked" , "required":true },
+			{ "parameter":"exeCommands", "des":"Run command while change to clicked" , "required":false, "default":false },
 		],
 		"examples":[
 			{
@@ -773,7 +773,7 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "ChangePropListPanelItems", <br>' +
-						'	"items":["粮情信息","报警信息"], <br>' +
+						'	"items":["warehouseInfo","alarmInfo"], <br>' +
 						'	"state":false, <br>' +
 						'	"exeCommands":false <br>' +
 						'}'
@@ -782,10 +782,10 @@ var cmds = [
 	},
 	{
 		"cmd":"SetPropListPanelKeyValue",
-		"cmdDes":"让物体属性面板显示物体数据",
+		"cmdDes":"Show object property on panel",
 		"parameters":[
-			{ "parameter":"valueBuffer", "des":"需要先把属性值放到buffer里，这里引入buffer，提供过给面板显示数据" , "required":true },
-			{ "parameter":"names", "des":"从buffer里取值，按照names的内容和次序" , "required":false }
+			{ "parameter":"valueBuffer", "des":"Buffer name" , "required":true },
+			{ "parameter":"names", "des":"Get data from buffer by order of name array" , "required":false }
 		],
 		"examples":[
 			{
@@ -793,8 +793,8 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SetPropListPanelKeyValue", <br>' +
-						'	"valueBuffer":{"ObjectManager":"RunBuffer/面板显示数据"}, <br>' +
-						'	"names":["温度","火灾","虫害"] <br>' +
+						'	"valueBuffer":{"ObjectManager":"RunBuffer/panelData"}, <br>' +
+						'	"names":["Temperature","Fire","InsectControl"] <br>' +
 						'}'
 			}
 		]

@@ -1,16 +1,16 @@
 var cmds = [
 	{
 		"cmd":"SetMonitorRespond",
-		"cmdDes":"设置物体的针对监控数据（MonitorDatas/RealTimeData下属性）的响应",
+		"cmdDes":"Set response to MonitorDatas/RealTimeData",
 		"parameterInherit":"ObjectCommand",
 		"parameters":[	
-			{ "parameter":"config", "des":"针对MonitorDatas/RealTimeData下属性分别配置监控的响应 。<br>	" +
-					"注意：<br>	" +
-					"	1. 可以同时配置多个属性的响应。<br>	" +
-					"	2. 每个属性可以配置多个响应的数据，并针对那个数据通过数组,设置多条响应命令。<br>	" +
-					"	3. 每个属性可以配置两类数据：文字和数字，如果全部是数字的话，系统会自动排序，并从最小值开始，找到小于等于的数值，执行响应命令。<br>	" +
-					"	4. 当配置的所有数据是文字，可设置一个'_default_',表示当取到的数据没有出现在配置里时执行后面设定响应命令。<br>	" +
-					"	5. 可回调中可使用GetLastMonitorRespondObj获取当前处理对象，也可直接使用内置buffer: {'ObjectManager':'RunBuffer/lastMonitorRespondObj'}直接获取操作对象。" , "required":true }
+			{ "parameter":"config", "des":"Response is based on properties of MonitorDatas/RealTimeData.<br>	" +
+					"Note: <br>	" +
+					"	1. Support configure response on multiable properties<br>	" +
+					"	2. Supports multiable response to single property.<br>	" +
+					"	3. Value of property can be string or number. if property value are all numbers, system will sort those numbers and trigger command with equal or less than numbers.<br>	" +
+					"	4. If property value are all strings, use '_default_' to run command if data is NOT in value set.<br>	" +
+					"	5. Use GetLastMonitorRespondObj to get current object in callback, or use buffer: {'ObjectManager':'RunBuffer/lastMonitorRespondObj'} to get current object" , "required":true }
 		],
 		"examples":[	
 			{
@@ -18,29 +18,29 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SetMonitorRespond", <br>' +
-						'	"fromBuffer":{"ObjectManager": "RunBuffer/粮食"},<br>' +
+						'	"fromBuffer":{"ObjectManager": "RunBuffer/Grain"},<br>' +
 						'	"config":{<br>' +
-						'		"粮食种类":{ //标示是"从MonitorDatas/RealTimeData/粮食种类"下取的监控值<br>' +
-						'			"玉米":[ //当取到的数值是"玉米"时执行设定的命令<br>' +
-						'				{"cmd": "GetLastMonitorRespondObj", "toBuffer":"monitorRespondObj"}, //使用命令获取当前处理物体<br>' +
+						'		"GrainCatelog":{ //get value from "MonitorDatas/RealTimeData/GrainCatelog"<br>' +
+						'			"Corn":[ //run command if value is "Corn"<br>' +
+						'				{"cmd": "GetLastMonitorRespondObj", "toBuffer":"monitorRespondObj"}, //run command<br>' +
 						'				{"cmd": "ChangePlacementTexture", "fromBuffer":"monitorRespondObj", "url": "images/corn.jpg"}<br>' +
 						'			],<br>' +
-						'			"小麦":[ //当取到的数值是"小麦"时执行设定的命令<br>' +
-						'				{"cmd": "GetLastMonitorRespondObj", "toBuffer":"monitorRespondObj"}, //使用命令获取当前处理物体<br>' +
+						'			"Wheat":[ //run command if value is "Wheat"<br>' +
+						'				{"cmd": "GetLastMonitorRespondObj", "toBuffer":"monitorRespondObj"}, //run command<br>' +
 						'				{"cmd": "ChangePlacementTexture", "fromBuffer":"monitorRespondObj", "url": "images/wheat.jpg"}<br> ' +
 						'			]<br>' +
 						'		},<br>' +
-						'		"粮食储量":{ //标示是"从MonitorDatas/RealTimeData/粮食储量"下取的监控值<br>' +
-						'			"10":[{"cmd":"SetScale", "fromBuffer":"lastMonitorRespondObj", "scale":[1,0.1,1] } ], //所有设置值都是数字，这里系统自动判断当取到的数值小于等于10时执行设定的命令,注意这里直接使用了内置buffer获取操作对象<br>' +
-						'			"30":[{"cmd":"SetScale", "fromBuffer":"lastMonitorRespondObj", "scale":[1,0.3,1]  } ], //所有设置值都是数字，这里系统自动判断当取到的数值小于等于30时执行设定的命令<br>' +
-						'			"50":[{"cmd":"SetScale", "fromBuffer":"lastMonitorRespondObj", "scale":[1,0.5,1]  } ], //所有设置值都是数字，这里系统自动判断当取到的数值小于等于50时执行设定的命令<br>' +
-						'			"80":[{"cmd":"SetScale", "fromBuffer":"lastMonitorRespondObj", "scale":[1,0.8,1]  } ], //所有设置值都是数字，这里系统自动判断当取到的数值小于等于80时执行设定的命令<br>' +
-						'			"100":[{"cmd":"SetScale", "fromBuffer":"lastMonitorRespondObj", "scale":[1,1,1]  } ] //所有设置值都是数字，同时是最后一个配置，这里系统自动判断当取到的数值小于等于，也或者大于100时执行设定的命令<br>' +
+						'		"GrainStorage":{ //get value from "MonitorDatas/RealTimeData/GrainStorage"<br>' +
+						'			"10":[{"cmd":"SetScale", "fromBuffer":"lastMonitorRespondObj", "scale":[1,0.1,1] } ], // run command if value equal or less than 10, note that current object is fetch by system buffer lastMonitorRespondObj<br>' +
+						'			"30":[{"cmd":"SetScale", "fromBuffer":"lastMonitorRespondObj", "scale":[1,0.3,1]  } ], //run command if value equal or less than 30 <br>' +
+						'			"50":[{"cmd":"SetScale", "fromBuffer":"lastMonitorRespondObj", "scale":[1,0.5,1]  } ], //run command if value equal or less than 50<br>' +
+						'			"80":[{"cmd":"SetScale", "fromBuffer":"lastMonitorRespondObj", "scale":[1,0.8,1]  } ], //run command if value equal or less than 50<br>' +
+						'			"100":[{"cmd":"SetScale", "fromBuffer":"lastMonitorRespondObj", "scale":[1,1,1]  } ] //run command if value equal or less than 100<br>' +
 						'		},<br>' +
-						'		"粮食状态":{ //标示是"从MonitorDatas/RealTimeData/粮食状态"下取的监控值<br>' +
-						'			"虫害":[{"cmd":"ColorFlash",   "fromBuffer":"lastMonitorRespondObj",   "color":[1,0,0] , "start":0.6, "end":0.2, "time":1.0 } ], //当取到的数值是"虫害"时执行设定的命令<br>' +
-						'			"陈旧":[{"cmd":"ColorFlash",   "fromBuffer":"lastMonitorRespondObj",   "color":[0,0,1] , "start":0.6, "end":0.2, "time":1.0 } ], //当取到的数值是"陈旧"时执行设定的命令<br>' +
-						'			"_default_":[{"cmd":"ColorFlash",   "fromBuffer":"lastMonitorRespondObj",   "enable":false } ] //使用"_default_"标示当取到的数值没有配置匹配时执行设定的命令<br>' +
+						'		"GrainStatus":{ //get value from "MonitorDatas/RealTimeData/GrainStatus"<br>' +
+						'			"InsectHazzard":[{"cmd":"ColorFlash",   "fromBuffer":"lastMonitorRespondObj",   "color":[1,0,0] , "start":0.6, "end":0.2, "time":1.0 } ], //run command if value equals to InsectHazzard<br>' +
+						'			"Decay":[{"cmd":"ColorFlash",   "fromBuffer":"lastMonitorRespondObj",   "color":[0,0,1] , "start":0.6, "end":0.2, "time":1.0 } ], //run command if value equals to Decay<br>' +
+						'			"_default_":[{"cmd":"ColorFlash",   "fromBuffer":"lastMonitorRespondObj",   "enable":false } ] //run command if no match<br>' +
 						'		}<br>' +						
 						'	}<br>' +						
 						'}'	
@@ -49,9 +49,9 @@ var cmds = [
 	},
 	{
 		"cmd":"GetLastMonitorRespondObj",
-		"cmdDes":"获取当前正在处理的监控响应物体",
+		"cmdDes":"Get current object",
 		"parameters":[	
-			{ "parameter":"toBuffer", "des":"设置响应物体存放的buffer", "required":true }
+			{ "parameter":"toBuffer", "des":"buffer name", "required":true }
 		],
 		"examples":[
 			{
@@ -66,5 +66,5 @@ var cmds = [
 	}	
 ]
 
-docCreator.addDocItemFromData("监控", cmds)
+docCreator.addDocItemFromData("Monitor", cmds)
 

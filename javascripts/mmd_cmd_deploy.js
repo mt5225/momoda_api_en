@@ -1,14 +1,14 @@
 var cmds = [
 	{
 		"cmd":"Deploy",
-		"cmdDes":"指定一些模型，并可在使用的环境下摆放这些模型",
+		"cmdDes":"Specify model set available in current environment",
 		"parameters":[			
-			{ "parameter":"enable", "des":"开启，或者关闭这个功能", "required":false, "default":true},
-			{ "parameter":"items", "des":"设置要放置的模型ID", "required":false},
+			{ "parameter":"enable", "des":"true or false, if true, enable, if false, disable ", "required":false, "default":true},
+			{ "parameter":"items", "des":"array of model IDs", "required":false},
 		],
 		"examples":[
 			{
-				"name":"启动部署功能",
+				"name":"Deploy Model",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "Deploy", <br>' +
@@ -19,7 +19,7 @@ var cmds = [
 						'}'	
 			},
 			{
-				"name":"关闭部署功能",
+				"name":"Disable",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "Deploy", <br>' +
@@ -30,11 +30,11 @@ var cmds = [
 	},
 	{
 		"cmd":"SetDragPlacementParamInDeploy",
-		"cmdDes":"设置拖拽时的效果和功能",
+		"cmdDes":"Effect setting during drag and drop",
 		"parameters":[
-			{ "parameter":"absorbPlacement", "des":"设置拖拽的物体是否可以吸引到另一个物体上", "required":false, "default":""},
-			{ "parameter":"absorbNormal", "des":"设置拖拽的物体是否与鼠标拾取的对齐物体面法线对齐", "required":false, "default":""},
-			{ "parameter":"absorbPivot", "des":"设置拖拽的物体是否与鼠标拾取的对齐物体轴心点对齐", "required":false, "default":""}
+			{ "parameter":"absorbPlacement", "des":"if object being drag can be attached by target object automatically", "required":false, "default":""},
+			{ "parameter":"absorbNormal", "des":"if object being drag align to normal line of target object automatically", "required":false, "default":""},
+			{ "parameter":"absorbPivot", "des":"if object being drag align to axis line of target object automatically", "required":false, "default":""}
 		],
 		"examples":[
 			{
@@ -53,9 +53,9 @@ var cmds = [
 	
 	{
 		"cmd":"GetDeployObjects",
-		"cmdDes":"获取通过Deploy命令打开的面版，摆放的所有物体",
+		"cmdDes":"Get deploy objects and save to buffer",
 		"parameters":[
-			{ "parameter":"toBuffer", "des":"设置物体存放的buffer", "required":true, "default":""}
+			{ "parameter":"toBuffer", "des":"buffer to store objects", "required":true, "default":""}
 		],
 		"examples":[
 			{
@@ -71,9 +71,9 @@ var cmds = [
 	
 	{
 		"cmd":"SetDeployObjects",
-		"cmdDes":"将buffer里的物体，设置给Deploy面板，变成通过Deploy命令打开的面版摆放的物体",
+		"cmdDes":"Set deploy objects from buffer",
 		"parameters":[
-			{ "parameter":"formBuffer", "des":"输入的物体buffer", "required":true, "default":""}
+			{ "parameter":"formBuffer", "des":"buffer name", "required":true, "default":""}
 		],
 		"examples":[
 			{
@@ -89,9 +89,9 @@ var cmds = [
 
 	{
 		"cmd":"GetDeployToJson",
-		"cmdDes":"获取通过Deploy命令打开的面版，摆放的所有物体，并将其变成json数据，存于buffer中",
+		"cmdDes":"Get deploy objects and save to buffer in JSON format",
 		"parameters":[
-			{ "parameter":"toBuffer", "des":"设置物体json数据存放的buffer", "required":true, "default":""}
+			{ "parameter":"toBuffer", "des":"buffer name", "required":true, "default":""}
 		],
 		"examples":[
 			{
@@ -107,9 +107,9 @@ var cmds = [
 	
 	{
 		"cmd":"SetDeployFromJson",
-		"cmdDes":"按照标准输入json，可将json指定的物体输入到Deploy模块中，并创建这些物体",
+		"cmdDes":"Deploy objects from JSON",
 		"parameters":[
-			{ "parameter":"json", "des":"输入的物体json数据", "required":true, "default":""}
+			{ "parameter":"json", "des":"JSON data", "required":true, "default":""}
 		],
 		"examples":[
 			{
@@ -120,14 +120,14 @@ var cmds = [
 						'	"json":{<br>	' +
 						'		"2345223":{<br>	' +
 						'			"bundle":"3268DD250B694147B0BDB37FA390BF96",<br>	' +
-						'			"floor":"楼层01",<br>	' +
-						'			"pos":"0.22 0.33 1.34", //为了加速加载这里使用了这样的格式数据，代替使用数组<br>	' +
-						'			"rot":"0 0 0",//为了加速加载这里使用了这样的格式数据，代替使用数组<br>	' +
-						'			"scl":"1 1 1",//为了加速加载这里使用了这样的格式数据，代替使用数组<br>	' +
+						'			"floor":"floor01",<br>	' +
+						'			"pos":"0.22 0.33 1.34", //position<br>	' +
+						'			"rot":"0 0 0",//rotation<br>	' +
+						'			"scl":"1 1 1",//scale<br>	' +
 						'			"properties":{<br>	' +
-						'				"UserID":"探头01",<br>	' +
+						'				"UserID":"Camera01",<br>	' +
 						'				"PropertyDict":{<br>	' +
-						'					"负责人":"wxz"<br>	' +
+						'					"Operator":"wxz"<br>	' +
 						'				}<br>	' +
 						'			}<br>	' +
 						'		}<br>	' +
@@ -138,9 +138,9 @@ var cmds = [
 	},
 	{
 		"cmd":"ClearDeployObjects",
-		"cmdDes":"清除已经摆放的物体",
+		"cmdDes":"Clear deployed objects",
 		"parameters":[
-			{ "parameter":"destroyObjects", "des":"设置在清除的同时，是否彻底删除场景里的对应的物体。如果输入false，在清除后，场景里还存在这些物体，只不过Deploy模块里不管理这些物体了", "required":false, "default":true}
+			{ "parameter":"destroyObjects", "des":"Clear objects in scene, if true, will clear objects both in Deploy module and scene, if false, only clear objects in Deploy module, and keep objects in scene.", "required":false, "default":true}
 		],
 		"examples":[
 			{
@@ -157,5 +157,5 @@ var cmds = [
 	}	
 ]
 
-docCreator.addDocItemFromData("部署物体", cmds)
+docCreator.addDocItemFromData("Deploy Object", cmds)
 
