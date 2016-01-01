@@ -1,12 +1,12 @@
 var cmds = [
 	{
 		"cmd":"OpenUrl",
-		"cmdDes":"使用输入的url弹开一个页面,等同于在页面上调用window.open ,目前这个命令只能运行于浏览器下使用的情况",
+		"cmdDes":"Open webpage,same as run javascript function window.open, only valid in browser",
 		"parameters":[	
-			{ "parameter":"url", "des":"要打开的url", "required":false },
-			{ "parameter":"urlBuffer", "des":"使用buffer提供要打开的url", "required":false},
-			{ "parameter":"param", "des":"打开页面使用的参数，格式和window.open使用的参数相同<br>	" +
-					"如：‘height=100, width=400, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no’", "required":false},
+			{ "parameter":"url", "des":"URL to be open", "required":false },
+			{ "parameter":"urlBuffer", "des":"Get URL by buffer", "required":false},
+			{ "parameter":"param", "des":"Same as parameters used in javascript function window.open<br>	" +
+					"for instance：‘height=100, width=400, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no’", "required":false},
 			
 		],
 		"examples":[	
@@ -32,14 +32,14 @@ var cmds = [
 	},
 	{
 		"cmd":"UrlWindow",
-		"cmdDes":"使用输入的url弹开一个页面窗口 ,目前这个命令只能运行于浏览器下使用的情况",
+		"cmdDes":"Open browser window with given URL, only valid in browser",
 		"parameters":[	
-			{ "parameter":"url", "des":"要打开的url", "required":false },
-			{ "parameter":"urlBuffer", "des":"使用buffer提供要打开的url", "required":false},
-			{ "parameter":"title", "des":"打开窗口的title文字", "required":false},
-			{ "parameter":"titleBuffer", "des":"使用buffer提供窗口的title文字", "required":false},
-			{ "parameter":"width", "des":"打开窗口的宽度", "required":false},
-			{ "parameter":"height", "des":"打开窗口的位置", "required":false},
+			{ "parameter":"url", "des":"URL to be open", "required":false },
+			{ "parameter":"urlBuffer", "des":"URL from buffer", "required":false},
+			{ "parameter":"title", "des":"Window title", "required":false},
+			{ "parameter":"titleBuffer", "des":"Window title from buffer", "required":false},
+			{ "parameter":"width", "des":"Window width", "required":false},
+			{ "parameter":"height", "des":"Window height", "required":false},
 		],
 		"examples":[	
 			{
@@ -48,7 +48,7 @@ var cmds = [
 						'{<br>' +
 						'	"cmd": "UrlWindow", <br>' +
 						'	"urlBuffer":"url", <br>' +
-						'	"title": "信息窗口", <br>' +
+						'	"title": "message", <br>' +
 						'	"width": 512, <br>' +
 						'	"height": 512 <br>' +
 						'}'	
@@ -57,34 +57,34 @@ var cmds = [
 	}	,
 	{
 		"cmd":"HtmlWindow",
-		"cmdDes":"使用输入的html文本弹开一个页面窗口 ,目前这个命令只能运行于浏览器下使用的情况",
+		"cmdDes":"Open browser windows and display given html, only valid in browser",
 		"parameters":[	
-			{ "parameter":"html", "des":"窗口里显示的html", "required":false },
-			{ "parameter":"htmlBuffer", "des":"使用buffer提供要显示的html", "required":false},
-			{ "parameter":"title", "des":"打开窗口的title文字", "required":false},
-			{ "parameter":"titleBuffer", "des":"使用buffer提供窗口的title文字", "required":false},
-			{ "parameter":"width", "des":"打开窗口的宽度", "required":false},
-			{ "parameter":"height", "des":"打开窗口的位置", "required":false}
+			{ "parameter":"html", "des":"Content in html format", "required":false },
+			{ "parameter":"htmlBuffer", "des":"Html content from buffer", "required":false},
+			{ "parameter":"title", "des":"Window title", "required":false},
+			{ "parameter":"titleBuffer", "des":"Window title from buffer", "required":false},
+			{ "parameter":"width", "des":"Window width", "required":false},
+			{ "parameter":"height", "des":"Window height", "required":false}
 		],
 		"examples":[	
 			{
 				"name":"",
-				"context":	'直接输入html显示' +
+				"context":	'Display HTML' +
 						'{<br>' +
 						'	"cmd": "HtmlWindow", <br>' +
-						'	"html":"<ol><li>变压器</li><li>高压配电柜</li><li>低压配电柜</li></ol>", <br>' +
-						'	"title": "分类窗口", <br>' +
+						'	"html":"<ol><li>dog</li><li>cat</li><li>bird</li></ol>", <br>' +
+						'	"title": "Catalog", <br>' +
 						'	"width": 512, <br>' +
 						'	"height": 512 <br>' +
 						'}'	
 			},
 			{
 				"name":"",
-				"context":	'通过buffer输入html显示' +
+				"context":	'Display HTML by Buffer' +
 						'{<br>' +
 						'	"cmd": "HtmlWindow", <br>' +
-						'	"htmlBuffer":{"ObjectManager":"RunBuffer/面板显示数据"}, <br>' +
-						'	"title": "分类窗口", <br>' +
+						'	"htmlBuffer":{"ObjectManager":"RunBuffer/htmlContent"}, <br>' +
+						'	"title": "Catalog", <br>' +
 						'	"width": 512, <br>' +
 						'	"height": 512 <br>' +
 						'}'	
@@ -93,7 +93,7 @@ var cmds = [
 	},		
 	{
 		"cmd":"HideWindow",
-		"cmdDes":"关闭 UrlWindow和HtmlWindow打开的窗口,目前这个命令只能运行于浏览器下使用的情况",
+		"cmdDes":"Close window opened by UrlWindow or HtmlWindow, only valid in browser",
 		"parameters":[	
 		],
 		"examples":[	
@@ -105,40 +105,40 @@ var cmds = [
 	},
 	{
 		"cmd":"ExecuteHtmlInterface",
-		"cmdDes":"如果模模搭运行于页面上，可以通过这个命令调用页面的js接口",
+		"cmdDes":"Run javascript code in browser",
 		"parameters":[	
-			{ "parameter":"interfaceName", "des":"要运行的js接口", "required":false },
-			{ "parameter":"fromBuffer", "des":"将buffer里的内容发送到页面，目前只支持发送模模搭里的物体。要求页面js接口的第一个参数是接收模模搭对象的。<br>	" +
-					"注：<br>	" +
-					"	1. 输出到页面的对象数据结构如下：<br>	" +
+			{ "parameter":"interfaceName", "des":"javascript method name", "required":false },
+			{ "parameter":"fromBuffer", "des":" set buffer content(object only) to javascript method<br>	" +
+					"Note：<br>	" +
+					"	1. Data structure pass to javascript method：<br>	" +
 					"		{<br>	" +
-					"			'ID':'J17gKNmUeUeSXpDzPH_pZA', //模模搭里面的内置ID'<br>	" +
-					"			'UserID':'100007001', //用户自行输入的ID'<br>	" +
-					"			'Name':'档案盒002', //用户自行输入的名字'<br>	" +					
-					"			'ParentObjectUserID':'档案室一层', //物体父亲物体的UserID'<br>	" +
-					"			'ParentObjectID':'144', //物体父亲物体的模模搭内置ID'<br>	" +
-					"			'Position':'-21.263 2.357 -5.653', //物体的世界坐标系下的坐标'<br>	" +
-					"			'LocalPosition':'-22.944 2.357 -10.038', //物体的父物体坐标系下的坐标'<br>	" +
-					"			'BoundBoxMax':'-21.163 2.657 -5.630', //物体包围盒的最小点'<br>	" +
-					"			'BoundBoxMin':'-21.363 2.357 -5.675', //物体包围盒的最大点'<br>	" +
-					"			'BundleId':'B723E9E1B279467EBC9433D30D35F683', //物体使用的模型id'<br>	" +
-					"			'BundleSize':'1.000 1.000 1.000', //物体使用模型的尺寸'<br>	" +  
-					"			'BundleVersion':'1.000 1.000 1.000', //物体使用模型的版本'<br>	" +
-					"			'BundleTitleEn':'Universal side box', //物体使用模型的英文版名字'<br>	" +
-					"			'BundleTitle':'万能方盒子', //物体使用模型的中文版名字'<br>	" +
-					"			'PropertyDict':{'物体类型':'档案盒'}, //物体的自定义属性'<br>	" +
-					"			'MonitorDatas/RealTimeData':{'温度':67} //物体的监控数据'<br>	" +
+					"			'ID':'J17gKNmUeUeSXpDzPH_pZA', //ObjecID'<br>	" +
+					"			'UserID':'100007001', //Object UID'<br>	" +
+					"			'Name':'Box002', //Object name'<br>	" +					
+					"			'ParentObjectUserID':'floor001', //Parent Object UID'<br>	" +
+					"			'ParentObjectID':'144', //Parent Object ID'<br>	" +
+					"			'Position':'-21.263 2.357 -5.653', //Coordinate in world'<br>	" +
+					"			'LocalPosition':'-22.944 2.357 -10.038', //Coordinate in Parent'<br>	" +
+					"			'BoundBoxMax':'-21.163 2.657 -5.630', //Object bound point (max)'<br>	" +
+					"			'BoundBoxMin':'-21.363 2.357 -5.675', //Object bound point (min)'<br>	" +
+					"			'BundleId':'B723E9E1B279467EBC9433D30D35F683', //Model ID'<br>	" +
+					"			'BundleSize':'1.000 1.000 1.000', //Model size'<br>	" +  
+					"			'BundleVersion':'1.000 1.000 1.000', //Model version'<br>	" +
+					"			'BundleTitleEn':'Universal side box', //Model name in english'<br>	" +
+					"			'BundleTitle':'Universal side box', //Model name'<br>	" +
+					"			'PropertyDict':{'ObjectType':'box'}, //User-define properties'<br>	" +
+					"			'MonitorDatas/RealTimeData':{'Temperature':67} //Monitoring data'<br>	" +
 					"		}<br>	" +
-					"	2. 如果需要传其他参数，可通过exArguments属性传递", "required":false},
-			{ "parameter":"exArguments", "des":"输入一个数组,分别是页面js接口的每个输入的参数。", "required":false }
+					"	2. Use exArguments to pass additional values", "required":false},
+			{ "parameter":"exArguments", "des":"Additional arguments in array", "required":false }
 		],
 		"examples":[
 			{
 				"name":"//////////////////////////////////////////////////////////<br>" +
-						"//将buffer里的物体传给页面js接口<br>" +
+						"//Pass object from buffer to javascript method<br>" +
 						"//////////////////////////////////////////////////////////<br>",
 				"context":	'' +
-						'//页面上定义一个接口<br>' +
+						'//define method in javascript<br>' +
 						'var keeper = {};<br>' +
 						'keeper.getSelectedObjs = function(objs){<br>' +
 						'	objs = mmd.jsonTools.parseJSON(objs);<br>' +
@@ -147,7 +147,7 @@ var cmds = [
 						'	}<br>' +					
 						'}<br>' +
 						
-						'<br>//使用模模搭的命令调用上面的接口<br>' +	
+						'<br>//call method<br>' +	
 						'{<br>' +
 						'	"cmd": "ExecuteHtmlInterface", <br>' +
 						'	"interfaceName": "keeper.getSelectedObjs", <br>' +
@@ -156,17 +156,17 @@ var cmds = [
 			},	
 			{
 				"name":"//////////////////////////////////////////////////////////<br>" +
-						"//将buffer里的物体传给页面js接口,同时接口还有其它参数需要输入<br>" +
+						"//Pass object from buffer to javascript method with additional arguments<br>" +
 						"//////////////////////////////////////////////////////////<br>",
 				"context":	'' + 
-						'//页面上定义一个接口<br>' + 
+						'//define javascript method<br>' + 
 						'var keeper = {};<br>' + 
 						'keeper.setColorByType = function( objs, objType, color ){<br>' + 
 						'	objs = mmd.jsonTools.parseJSON(objs);<br>' +
 						'	var uids = [];<br>' + 
 						'	for(var i = 0 ; i < objs.length; i++){<br>' + 
 						'		var obj = objs[i];<br>' + 
-						'		if(obj["PropertyDict"]["物体类型"] == objType){<br>' +
+						'		if(obj["PropertyDict"]["ObjectType"] == objType){<br>' +
 						'			uids.push(obj["UserID"]);<br>' +
 						'		}<br>' + 
 						'	};<br>' +
@@ -177,29 +177,29 @@ var cmds = [
 						'	mmd.RunCommand( cmdsStr, true);<br>' + 
 						'}<br>' + 
 						
-						'<br>//使用模模搭的命令调用上面的接口<br>' +	
+						'<br>//call method<br>' +	
 						'{<br>' +
 						'	"cmd": "ExecuteHtmlInterface", <br>' +
 						'	"interfaceName": "keeper.setColorByType", <br>' +
 						'	"fromBuffer":{"ObjectManager":"RunBuffer/objs"}, <br>' +
-						'	"exArguments":[ "100元箱子", [1,0,0]]<br>' +
+						'	"exArguments":[ "100box", [1,0,0]]<br>' +
 						'}'	
 			},
 			{
 				"name":"//////////////////////////////////////////////////////////<br>" +
-						"//也可以不传入buffer里的物体,只传入其它参数<br>" +
+						"//Pass arguments without object data<br>" +
 						"//////////////////////////////////////////////////////////<br>",
 				"context":	'' + 
-						'//页面上定义一个接口<br>' + 
+						'//define javascript method<br>' + 
 						'var saveLog = function( text, sync ){<br>' + 
 						'	......<br>' + 
 						'}<br>' + 
 						
-						'<br>//使用模模搭的命令调用上面的接口<br>' + 
+						'<br>//call method<br>' + 
 						'{<br>' + 
 						'	"cmd": "ExecuteHtmlInterface", <br>' + 
 						'	"interfaceName": "saveLog", <br>' + 
-						'	"exArguments":[ "已经打开场景", false]<br>' +
+						'	"exArguments":[ "scene is open", false]<br>' +
 						'}'	
 			}			
 			
@@ -207,5 +207,5 @@ var cmds = [
 	}	
 ]
 
-docCreator.addDocItemFromData("页面", cmds)
+docCreator.addDocItemFromData("Web", cmds)
 

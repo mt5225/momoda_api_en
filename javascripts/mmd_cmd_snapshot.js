@@ -1,26 +1,26 @@
 var cmds = [
 	{
 		"cmd":"Snapshot",
-		"cmdDes":"获得或存储一个视点",
+		"cmdDes":"Get and save snapshot",
 		"parameters":[	
-			{ "parameter":"name", "des":"视点的名字", "required":true },
-			{ "parameter":"isSaveToServer", "des":"是否存储到服务器上", "required":false, "default":false},
-			{ "parameter":"isShowIn3D", "des":"是否在视点托盘里显示", "required":false, "default":false},
-			{ "parameter":"jsonToBuffer", "des":"设置视点json要存储的buffer", "required":false}
+			{ "parameter":"name", "des":"Name of snapshot", "required":true },
+			{ "parameter":"isSaveToServer", "des":"If save to server", "required":false, "default":false},
+			{ "parameter":"isShowIn3D", "des":"If shown in menu", "required":false, "default":false},
+			{ "parameter":"jsonToBuffer", "des":"Save snapshot json to buffer", "required":false}
 		],
 		"examples":[	
 			{
-				"name":"简单设置一个视点",
+				"name":"set a snapshot",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "Snapshot", <br>' +
-						'	"name":"我的工作界面", <br>' +
+						'	"name":"my workspace", <br>' +
 						'	"isSaveToServer": true, <br>' +
 						'	"isShowIn3D": false <br>' +
 						'}'	
 			},
 			{
-				"name":"获取视点数据到buffer",
+				"name":"get snapshot data and save to buffer",
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "Snapshot", <br>' +
@@ -32,9 +32,9 @@ var cmds = [
 	},
 	{
 		"cmd":"SnapshotRecoverByName",
-		"cmdDes":"通过名字调用恢复一个视点",
+		"cmdDes":"Recover snapshot by name",
 		"parameters":[	
-			{ "parameter":"name", "des":"要恢复的视点名字", "required":true }
+			{ "parameter":"name", "des":"Snapshot name", "required":true }
 		],
 		"examples":[	
 			{
@@ -42,7 +42,7 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SnapshotRecoverByName", <br>' +
-						'	"name":"我的工作界面" <br>' +
+						'	"name":"my workspace" <br>' +
 						'}'	
 			}
 		]
@@ -50,9 +50,9 @@ var cmds = [
 	
 	{
 		"cmd":"SnapshotRecoverByJson",
-		"cmdDes":"通过json数据恢复一个视点",
+		"cmdDes":"Recover snapshot by json",
 		"parameters":[	
-			{ "parameter":"json", "des":"要恢复的视点json数据", "required":true }
+			{ "parameter":"json", "des":"json data", "required":true }
 		],
 		"examples":[	
 			{
@@ -68,9 +68,9 @@ var cmds = [
 	
 	{
 		"cmd":"PlaySnapshotAnimByName",
-		"cmdDes":"通过名字播放一个视点动画",
+		"cmdDes":"Play snapshot animation by name",
 		"parameters":[	
-			{ "parameter":"name", "des":"要播放的视点动画名字", "required":true }
+			{ "parameter":"name", "des":"Name of animation", "required":true }
 		],
 		"examples":[	
 			{
@@ -78,7 +78,7 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "PlaySnapshotAnimByName", <br>' +
-						'	"name":"巡检路径01" <br>' +
+						'	"name":"Check01" <br>' +
 						'}'	
 			}
 		]
@@ -86,7 +86,7 @@ var cmds = [
 	
 	{
 		"cmd":"StopSnapshotAnim",
-		"cmdDes":"停止播放当前播放的视点动画",
+		"cmdDes":"Stop snapshot animation",
 		"parameters":[				
 		],
 		"examples":[	
@@ -105,5 +105,5 @@ var cmds = [
 	
 ]
 
-docCreator.addDocItemFromData("视点", cmds)
+docCreator.addDocItemFromData("Snapshot", cmds)
 

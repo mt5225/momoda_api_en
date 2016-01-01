@@ -111,7 +111,7 @@ var cmds = [
 		"cmdDes":"Assign value to buffer", 
 		"parameters":[
 			{ "parameter":"toBuffer", "des":"buffer path", "required":true, "default":""},
-			{ "parameter":"value", "des":"value", "required":true, "default":""}
+			{ "parameter":"value", "des":"value to be set", "required":true, "default":""}
 		],
 		"examples":[
 			{

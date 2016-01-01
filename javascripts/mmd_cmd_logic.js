@@ -1,12 +1,12 @@
 var cmds = [
 	{
 		"cmd":"RegTimer",
-		"cmdDes":"设置定时器，到时候运行设定的命令",
+		"cmdDes":"Register timer",
 		"parameters":[	
-			{ "parameter":"name", "des":"为这个定时器设定一个名字", "required":true },
-			{ "parameter":"time", "des":"设定定时的时间，输入的数值单位是秒", "required":false, "defualt":0 },
-			{ "parameter":"loop", "des":"设定是否循环调用，按照设定的时间间隔循环运行", "required":false, "defualt":false },
-			{ "parameter":"cmds", "des":"设定到时运行的命令", "required":true },
+			{ "parameter":"name", "des":"Timer name", "required":true },
+			{ "parameter":"time", "des":"Timeout, in seconds", "required":false, "defualt":0 },
+			{ "parameter":"loop", "des":"If repeat", "required":false, "defualt":false },
+			{ "parameter":"cmds", "des":"Command to be executed at timeout", "required":true },
 		],
 		"examples":[
 			{
@@ -14,10 +14,10 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "RegTimer", <br>' +
-						'	"name":"定时爆炸", <br>' +
+						'	"name":"ExplodeWhenTimeout", <br>' +
 						'	"loop":false, <br>' +
 						'	"cmds":[<br>' +
-						'		{ "cmd": "CreatePlacement", "uid" : "爆炸", "bundleId":"C2F0A5FB249A4F4C9D7A46E4876E2F4C", "pos":[0,0,0]} <br>' +
+						'		{ "cmd": "CreatePlacement", "uid" : "Explode", "bundleId":"C2F0A5FB249A4F4C9D7A46E4876E2F4C", "pos":[0,0,0]} <br>' +
 						'	]<br>' +						
 						'}'	
 			}
@@ -25,9 +25,9 @@ var cmds = [
 	},
 	{
 		"cmd":"UnregTimer",
-		"cmdDes":"注销定时器",
+		"cmdDes":"Unregister timer",
 		"parameters":[	
-			{ "parameter":"name", "des":"通过名字指定注销哪个定时器", "required":true }
+			{ "parameter":"name", "des":"Name of the timer", "required":true }
 		],
 		"examples":[
 			{
@@ -35,18 +35,18 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "UnregTimer", <br>' +
-						'	"name":"定时爆炸" <br>' +
+						'	"name":"ExplodeWhenTimeout" <br>' +
 						'}'	
 			}
 		]
 	},
 	{
 		"cmd":"CheckBoolean",
-		"cmdDes":"通过buffer传入布尔值，如果是true执行对应的命令，如果是false执行对应的命令",
+		"cmdDes":"Pass boolean value from buffer, then run command depends on boolean value",
 		"parameters":[	
-			{ "parameter":"fromBuffer", "des":"设定传入Boolean值的buffer", "required":true },
-			{ "parameter":"trueCmds", "des":"设定当输入值是true时的运行的命令,也可以不设定", "required":false },
-			{ "parameter":"falseCmds", "des":"设定当输入值是false时的运行的命令,也可以不设定", "required":false }
+			{ "parameter":"fromBuffer", "des":"Buffer to get boolean value", "required":true },
+			{ "parameter":"trueCmds", "des":"Command to run if true", "required":false },
+			{ "parameter":"falseCmds", "des":"Command to run if false", "required":false }
 		],
 		"examples":[
 			{
@@ -54,7 +54,7 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "CheckBoolean", <br>' +
-						'	"fromBuffer":"是否正确",<br>' +
+						'	"fromBuffer":"resultBuffer",<br>' +
 						'	"trueCmds":[<br>' +
 						'		{"cmd":"SetColor",   "uid":"obj01",   "color":[1,0,0] }<br>' +
 						'	], <br>' +
@@ -68,5 +68,5 @@ var cmds = [
 	
 ]
 
-docCreator.addDocItemFromData("逻辑", cmds)
+docCreator.addDocItemFromData("Logic", cmds)
 
