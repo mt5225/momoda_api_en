@@ -14,8 +14,14 @@ var cmds = [
 			{ "parameter":"transformProxyFromBuffer", "des":"Reference Object from Buffer, if specified, pos, rot and scl are relative to reference object", "required":false},			
 			{ "parameter":"pos", "des":"Object Position<br>	" +
 					"Note: if transformProxy is specified, pos is relative to transformProxy object, otherwise is relative to parent object.", "required":false, "default":[0,0,0]},
-			{ "parameter":"rot", "des":"Object rotation, a 4-element array represents x axis, y axis and z axis rotation respectively, unit: degree.<br>	" +
-					"Note: if transformProxy is specified, rot is relative to transformProxy object, otherwise is relative to parent object.", "required":false, "default":[0,0,0,1]},				
+			{ "parameter":"rot", "des":"Object rotation in 3-element tuple as Euler angles, use alternatively with quat, unit: degree. <br>	" +
+					"<img src='images/EulerAngles.jpg'><br>	" +
+					"Euler angles is essentially rotation against axis x,y and z while y is the vertical axis<br>	" +
+					"Note: if transformProxy is specified, rot will based on transformProxy object coordinate, otherwise based on parent object.", "required":false, "default":[0,0,0]},
+			{ "parameter":"quat", "des":"Object rotation specified by a 4-element tuple, use alternatively with ror.<br>	" +
+					"Any rotation can be determinate by a single axis with rotation angle. Give a axis (x, y, z) and a angle θ, rotation can be calculated as：<br>	" +
+					"	quat = [ x*sin(θ/2), y*sin(θ/2),z*sin(θ/2), cos(θ/2)] <br>	" +
+					"Note: if transformProxy is specified, rot will based on transformProxy object coordinate, otherwise based on parent object.", "required":false, "default":[0,0,0,1]},			
 			{ "parameter":"scl", "des":"Scale Factor<br>	" +
 					"Note: if transformProxy is specified, scale factor is relative to transformProxy object, otherwise is relative to parent object.", "required":false, "default":[1,1,1]},
 		],
