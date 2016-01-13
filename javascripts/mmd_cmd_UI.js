@@ -176,7 +176,7 @@ var cmds = [
 						'				"horizontalAlignment":"LEFT",	//horizontal position, can be one of LEFT CENTER RIGHT<br>' +
 						'				"horizontalAlignmentOffset":0,	//horizontal offset<br>' +
 						'				"verticalAlignment":"TOP",	//vertical position, can be one of TOP CENTER BOTTOM<br>' +
-						'				"verticalAlignmentOffset":0,	//horizontal offset<br>' +
+						'				"verticalAlignmentOffset":0,	//vertical offset<br>' +
 						'				<br>' +
 						'				//private parameters<br>' +
 						'				"openAngle":"360",<br>' +
@@ -550,9 +550,9 @@ var cmds = [
 						'		//set panel size<br>' +						
 						'		"bgWidth": 150,<br>' +
 						'		"bgHeight": 330,<br><br>' +
-						'		//panel axis position<br>' +
-						'		"horizontalAlignment":"LEFT",	// horizontal position, can be one of  LEFT CENTER RIGHT<br>' +
-						'		"verticalAlignment":"CENTER",	// vertical position, can be one of TOP CENTER BOTTOM<br><br>' +
+					//	'		//panel axis position<br>' +
+					//	'		"horizontalAlignment":"LEFT",	// horizontal position, can be one of  LEFT CENTER RIGHT<br>' +
+					//	'		"verticalAlignment":"CENTER",	// vertical position, can be one of TOP CENTER BOTTOM<br><br>' +
 						'		//function groups<br>' +						
 						'		"groups":[<br>' +	
 						'			{<br>' +	

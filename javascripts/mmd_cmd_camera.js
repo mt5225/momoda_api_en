@@ -5,7 +5,7 @@ var cmds = [
 		"cmdDes":"viewpoint switch between 3D and 2D<br>	" +
 				"Note：same as 3D/2D switch button in control panel",
 		"parameters":[
-			{ "parameter":"state", "des":"If true, switch to 3D, if false, switch to 2D" , "required":false, "default":true }
+			{ "parameter":"enable", "des":"If true, switch to 3D, if false, switch to 2D" , "required":false, "default":true }
 		],
 		"examples":[
 			{
@@ -13,7 +13,7 @@ var cmds = [
 				"context":	'' +
 						'{<br>' +
 						'	"cmd": "SwitchCameraTo3D", <br>' +
-						'	"state":false <br>' +
+						'	"enable":false <br>' +
 						'}'	
 			}
 		]

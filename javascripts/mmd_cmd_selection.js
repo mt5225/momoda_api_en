@@ -74,7 +74,7 @@ var cmds = [
 	},	
 	{
 		"cmd":"ClearSelection",
-		"cmdDes":"Empty selection set and marked all objects in selection set as 'unselected'",
+		"cmdDes":"Empty selection set and mark all objects as 'unselected'",
 		"parameters":[			
 			
 		],
@@ -90,7 +90,7 @@ var cmds = [
 	},
 	{
 		"cmd":"RemoveFromSelection",
-		"cmdDes":"Remove objects from selection set and marked as 'unselected'" ,
+		"cmdDes":"Remove objects from selection set and mark as 'unselected'" ,
 		"parameterInherit":"ObjectCommand",
 		"parameters":[	
 			

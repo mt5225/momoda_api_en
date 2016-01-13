@@ -35,7 +35,7 @@ var cmds = [
 						'	"bundleId":"F933B1A524B94050BC7A82B15D2057F5", <br>' +
 						'	"transformProxyUid":"carbin01",<br>' +
 						'	"pos":[0,2,0],<br>' +
-						'	"rot":[0,0,0,1],<br>' +
+						'	"rot":[0,90,0],<br>' +
 						'	"scl":[0.1,0.2,0,2]<br>' +
 						'}'	
 			}
@@ -549,29 +549,7 @@ var cmds = [
 						'}'	
 			}
 		]
-	},
-	
-	{
-		"cmd":"CalculateObjectsCenter",
-		"cmdDes":"Calculate objects center",
-		"parameterInherit":"ObjectCommand",
-		"parameters":[
-			{ "parameter":"offset", "des":"Offset to calculated result", "required":false, "default":[0,0,0] },
-			{ "parameter":"toBuffer", "des":"Save to buffer", "required":true }
-		],
-		"examples":[
-			{
-				"name":"",
-				"context":'' +
-						'{<br>' +
-						'	"cmd": "CalculateObjectsCenter", <br>' +
-						'	"fromBuffer": "source_buffer", <br>' +
-						'	"toBuffer": "center_location" <br>' +
-						'}'	
-			}
-		]
-	},
-	
+	},	
 	{
 		"cmd":"CreateTimerObject",
 		"cmdDes":"Create timer object, can be used as data source, invisible in UI<br>	" +

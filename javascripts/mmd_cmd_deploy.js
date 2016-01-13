@@ -147,10 +147,7 @@ var cmds = [
 				"name":"",
 				"context":	'' +
 						'{<br>' +
-						'	"cmd":"SetDragPlacementParamInDeploy", <br>' +
-						'	"absorbPlacement":true,<br>' +
-						'	"absorbNormal":false, <br>' +	
-						'	"absorbPivot":true <br>' +	
+						'	"cmd":"ClearDeployObjects" <br>' +	
 						'}'	
 			}
 		]
